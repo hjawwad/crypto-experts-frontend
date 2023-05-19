@@ -12,11 +12,11 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import showSuccessAlert from "./utility/showSuccessAlert";
+import showErrorAlert from "./utility/showErrorAlert";
 
 const DropDownMenu = ({
   handleDelete,
   item,
-  setChange,
   onEditComment,
   onCreateInteractions,
   setInteraction,
@@ -44,14 +44,13 @@ const DropDownMenu = ({
       const response = await handleDelete(item.contact_id, item._id);
       if (response.status) {
         setOpen(false);
-        setChange(false);
         showSuccessAlert(response.message);
       } else {
         showErrorAlert("Something went wrong!");
         return;
       }
     } catch {
-      console.log("detaed request failed");
+      showErrorAlert("detaed request failed");
     }
   };
 

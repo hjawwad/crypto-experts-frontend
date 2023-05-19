@@ -47,6 +47,15 @@ const ListInteractions = ({ setChange }) => {
     setIsInteractionModalOpen(false);
   };
 
+  const handleDelete = async (contact_id, interaction_id) => {
+    const data = await deleteInteractionById(contact_id, interaction_id);
+    if (data.status) {
+      const response = await getAllInteractions(selectedRow._id);
+      setInteractions(response.data);
+    }
+    return data;
+  };
+
   return (
     <>
       {interactions &&
@@ -70,7 +79,7 @@ const ListInteractions = ({ setChange }) => {
             </div>
             <DropDownMenu
               handleEdit={updateInteractionById}
-              handleDelete={deleteInteractionById}
+              handleDelete={handleDelete}
               item={item}
               onCreateInteractions={onCreateInteractions}
               setInteraction={setInteraction}

@@ -43,9 +43,18 @@ const ListComments = ({ setChange }) => {
   };
 
   const handleCommentCloseModal = async () => {
-    const interact = await getAllComments(selectedRow._id);
-    setData(interact.data);
+    const comments = await getAllComments(selectedRow._id);
+    setData(comments.data);
     setIsModalOpen(false);
+  };
+
+  const handleDelete = async (contact_id, comment_id) => {
+    const data = await deleteCommentById(contact_id, comment_id);
+    if (data.status) {
+      const response = await getAllComments(selectedRow._id);
+      setData(response.data);
+    }
+    return data;
   };
   return (
     <>
@@ -63,7 +72,7 @@ const ListComments = ({ setChange }) => {
             <DropDownMenu
               onEditComment={onCreateComment}
               handleEdit={updateCommentById}
-              handleDelete={deleteCommentById}
+              handleDelete={handleDelete}
               item={item}
               setComment={setComment}
               comment={true}
