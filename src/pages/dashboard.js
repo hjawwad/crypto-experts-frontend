@@ -3,11 +3,11 @@ import Table from "./components/table";
 import Sidebar from "./components/sidebar";
 import Image from "next/image";
 import withAuth from "./components/withAuth";
-import { destroyCookie } from "nookies";
+import { getAllGroups } from "./api/register";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { getAllContactsByGroup } from "./api/register";
-import Cookies from "js-cookie";
 import ContactDetail from "./contactDetail";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,9 +19,11 @@ function Dashboard() {
   const [added, setAdded] = useState(false);
   const [title, setTitle] = useState("Crypto experts");
   const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [tableShow, setTableShow] = useState(true);
+  const token = Cookies.get("session_token");
   const [showDetail, setShowDetail] = useState(false);
 
   // const handleLogout = (e) => {
@@ -47,6 +49,31 @@ function Dashboard() {
     setIsLoading(false);
   };
 
+  const getAllGroupNames = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await getAllGroups();
+      await setData(response.data);
+      await setSelectedGroup(response.data[0].data);
+      setError(null);
+    } catch (error) {
+      //
+    }
+
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      await getAllGroupNames();
+    }
+    console.log("fetxh data", token);
+    if (token) {
+      fetchData();
+    }
+  }, [added]);
+
   useEffect(() => {
     async function fetchData() {
       if (selectedGroup && selectedGroup._id)
@@ -62,6 +89,8 @@ function Dashboard() {
         setSelectedGroup={setSelectedGroup}
         selectedGroup={selectedGroup}
         added={added}
+        data={data}
+        getAllGroupNames={getAllGroupNames}
         setTitle={setTitle}
         setTableShow={setTableShow}
         setShowDetail={setShowDetail}
@@ -95,6 +124,7 @@ function Dashboard() {
             selectedGroup={selectedGroup}
             added={added}
             setAdded={setAdded}
+            getAllGroupNames={getAllGroupNames}
             setTableShow={setTableShow}
             setShowDetail={setShowDetail}
           />

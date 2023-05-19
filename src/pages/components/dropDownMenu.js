@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   ClickAwayListener,
@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import showSuccessAlert from "./utility/showSuccessAlert";
 import showErrorAlert from "./utility/showErrorAlert";
+import CreateGroup from "./createGroup";
 
 const DropDownMenu = ({
   handleDelete,
@@ -21,11 +22,14 @@ const DropDownMenu = ({
   onCreateInteractions,
   setInteraction,
   setComment,
+  getAllGroupNames,
   comment = false,
   interaction = false,
+  group = false,
 }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const [addGroup, setAddGroup] = useState(false);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -41,13 +45,24 @@ const DropDownMenu = ({
 
   const handleDeleteClick = async () => {
     try {
-      const response = await handleDelete(item.contact_id, item._id);
-      if (response.status) {
-        setOpen(false);
-        showSuccessAlert(response.message);
+      if (!group) {
+        const response = await handleDelete(item.contact_id, item._id);
+        if (response.status) {
+          setOpen(false);
+          showSuccessAlert(response.message);
+        } else {
+          showErrorAlert("Something went wrong!");
+          return;
+        }
       } else {
-        showErrorAlert("Something went wrong!");
-        return;
+        const response = await handleDelete(item._id);
+        if (response.status) {
+          setOpen(false);
+          showSuccessAlert(response.message);
+        } else {
+          showErrorAlert("Something went wrong!");
+          return;
+        }
       }
     } catch {
       showErrorAlert("detaed request failed");
@@ -80,7 +95,14 @@ const DropDownMenu = ({
     } else if (interaction) {
       onCreateInteractions();
       setInteraction(item);
+    } else if (group) {
+      setAddGroup(!addGroup);
     }
+  };
+
+  const handleAddGroup = () => {
+    setAddGroup(!addGroup);
+    getAllGroupNames();
   };
 
   return (
@@ -138,6 +160,11 @@ const DropDownMenu = ({
           </Grow>
         )}
       </Popper>
+      <CreateGroup
+        isOpen={addGroup}
+        onRequestClose={handleAddGroup}
+        group={item}
+      />
     </>
   );
 };

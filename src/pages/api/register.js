@@ -90,6 +90,30 @@ export async function createContactByGroup(group_id, data) {
     throw new Error("Create Company By Group failed. Please try again later.");
   }
 }
+
+// app.put("/api/groups/:id", auth, controller.update);
+
+export async function updateGroupById(group_id, data) {
+  try {
+    const response = await instance.put(`/api/groups/${group_id}`, data);
+    debugger;
+    return response.data;
+  } catch (error) {
+    throw new Error("Update Company By Group failed. Please try again later.");
+  }
+}
+
+// /app.delete("/api/groups/:id", auth, controller.destroy);
+
+export async function deleteGroupById(group_id) {
+  try {
+    const response = await instance.delete(`/api/groups/${group_id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Grpup deleted successfully");
+  }
+}
+
 export async function createContactCompany(data) {
   try {
     const response = await instance.post(`/api/companies`, data);
@@ -98,6 +122,7 @@ export async function createContactCompany(data) {
     throw new Error("Create Company failed. Please try again later.");
   }
 }
+
 export async function getAllComments(contact_id) {
   try {
     const response = await instance.get(`/api/contacts/${contact_id}/comments`);
@@ -158,6 +183,7 @@ export async function deleteInteractionById(contact_id, interaction_id) {
     const response = await instance.delete(
       `/api/contacts/${contact_id}/interactions/${interaction_id}`
     );
+
     return response.data;
   } catch (error) {
     throw new Error("Interaction deleted Failed");

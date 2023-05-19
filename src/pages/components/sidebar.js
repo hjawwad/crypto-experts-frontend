@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import CreateGroup from "./createGroup";
-import { getAllGroups } from "../api/register";
-import Cookies from "js-cookie";
 import SearchBar from "./searchBar";
 import GroupIcon from "./svg-icons/group-icon";
 import ProfileIcon from "./svg-icons/profile-icon";
@@ -14,15 +12,15 @@ const Sidebar = ({
   setSelectedGroup,
   selectedGroup,
   added,
+  data,
   setTitle,
   setTableShow,
+  getAllGroupNames,
   setShowDetail,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [addGroup, setAddGroup] = useState(false);
-  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const token = Cookies.get("session_token");
   const [selected, setSelected] = useState(false);
 
   const router = useRouter();
@@ -44,29 +42,6 @@ const Sidebar = ({
     }
     return "";
   };
-  const getAllGroupNames = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await getAllGroups();
-      await setData(response.data);
-      await setSelectedGroup(response.data[0].data);
-      setError(null);
-    } catch (error) {
-      //
-    }
-
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    async function fetchData() {
-      await getAllGroupNames();
-    }
-    console.log("fetxh data", token);
-    if (token) {
-      fetchData();
-    }
-  }, [added]);
 
   const handleLogout = (e) => {
     e.preventDefault();

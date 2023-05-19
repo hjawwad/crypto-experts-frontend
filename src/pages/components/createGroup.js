@@ -1,12 +1,12 @@
 import ReactModal from "react-modal";
-import { useState } from "react";
-import { createGroup } from "../api/register";
+import { useEffect, useState } from "react";
+import { createGroup, updateGroupById } from "../api/register";
 import showErrorAlert from "./utility/showErrorAlert";
 import showSuccessAlert from "./utility/showSuccessAlert";
 
 ReactModal.setAppElement("#__next");
 
-function CreateGroup({ isOpen, onRequestClose }) {
+function CreateGroup({ isOpen, onRequestClose, group }) {
   const customStyles = {
     content: {
       maxWidth: "500px",
@@ -34,17 +34,28 @@ function CreateGroup({ isOpen, onRequestClose }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!name || !selectedFile) {
+    if (!name) {
       showErrorAlert("Group name and logo is required");
       return;
     }
     setIsLoading(true);
 
     try {
-      const response = await createGroup(name, selectedFile);
-      setIsLoading(true);
+      let response = "";
+      if (!group) {
+        response = await createGroup(name, selectedFile);
+      } else {
+        response = await updateGroupById(group._id, {
+          name,
+          icon: selectedFile,
+        });
+      }
+
       if (response.status) {
         showSuccessAlert(response.message);
+        setIsLoading(false);
+        setName("");
+        setSelectedFile(null);
       } else {
         showErrorAlert("Something went wrong!");
         return;
@@ -54,6 +65,12 @@ function CreateGroup({ isOpen, onRequestClose }) {
     }
     onRequestClose();
   };
+
+  useEffect(() => {
+    if (group) {
+      setName(group?.name);
+    }
+  }, [group]);
 
   return (
     <ReactModal
