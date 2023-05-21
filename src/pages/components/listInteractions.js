@@ -66,7 +66,7 @@ const ListInteractions = ({ setChange }) => {
         interactions.map((item) => (
           <div
             key={item._id}
-            style={{ color: mode.darkMode ? "#fff" : "#000" }}
+            style={{ color: mode?.darkMode ? "#fff" : "#000" }}
             className="flex justify-between items-center m-3 border border-[#303030] rounded-[8px]"
           >
             <div className="flex items-center m-2">
@@ -94,7 +94,7 @@ const ListInteractions = ({ setChange }) => {
         ))}
       <button
         onClick={onCreateInteractions}
-        style={{ color: mode.darkMode ? "#fff" : "#000" }}
+        style={{ color: mode?.darkMode ? "#fff" : "#000" }}
         className="fixed bottom-0 right-0 mb-8 mr-8 p-4 rounded-full" //</TabPanel>"
       >
         Create new

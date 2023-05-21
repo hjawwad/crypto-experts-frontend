@@ -111,7 +111,7 @@ const DropDownMenu = ({
   return (
     <>
       <Button
-        style={{ fontSize: "25px", color: mode.darkMode ? "#fff" : "#000" }}
+        style={{ fontSize: "25px", color: mode?.darkMode ? "#fff" : "#000" }}
         ref={anchorRef}
         id="composition-button"
         aria-controls={open ? "composition-menu" : undefined}
@@ -135,7 +135,7 @@ const DropDownMenu = ({
             style={{
               transformOrigin:
                 placement === "bottom-start" ? "left top" : "left bottom",
-              backgroundColor: mode.darkMode ? "#2B2B2B" : "#fff",
+              backgroundColor: mode?.darkMode ? "#2B2B2B" : "#fff",
             }}
           >
             <Paper>
@@ -152,8 +152,8 @@ const DropDownMenu = ({
                   </MenuItem>
                   <MenuItem
                     style={{
-                      color: mode.darkMode ? "#BC0000" : "#fff",
-                      backgroundColor: mode.darkMode ? "" : "#BC0000",
+                      color: mode?.darkMode ? "#BC0000" : "#fff",
+                      backgroundColor: mode?.darkMode ? "" : "#BC0000",
                       margin: "5px",
                       borderRadius: "5px",
                     }}

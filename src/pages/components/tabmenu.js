@@ -43,9 +43,9 @@ function TabMenu() {
   return (
     <Tabs selectedIndex={selectedIndex} onSelect={handleTabClick}>
       <TabList disabledTabClassName="react-tabs__tab--selected">
-        <Tab isConditionMet={mode.darkMode}>Comments</Tab>
-        <Tab isConditionMet={mode.darkMode}>Interactions</Tab>
-        <Tab isConditionMet={mode.darkMode}>Reminders</Tab>
+        <Tab isConditionMet={mode?.darkMode}>Comments</Tab>
+        <Tab isConditionMet={mode?.darkMode}>Interactions</Tab>
+        <Tab isConditionMet={mode?.darkMode}>Reminders</Tab>
       </TabList>
       <h1 className="border border-[#3A3A3A]"></h1>
 

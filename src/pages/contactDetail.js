@@ -65,8 +65,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
   const mode = useContext(ThemeContext);
 
   const rowStyle = {
-    backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
-    color: mode.darkMode ? "#808080" : "#FFFFF",
+    backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
+    color: mode?.darkMode ? "#808080" : "#FFFFF",
   };
 
   const handleSubmit = async (event) => {
@@ -168,7 +168,9 @@ function ContactDetail({ setTableShow, setShowDetail }) {
     <div
       className=" w-full"
       style={{
-        backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+        backgroundColor: mode?.darkMode
+          ? mode?.color?.dark
+          : mode?.color?.white,
       }}
     >
       {selectedRow && (
@@ -194,7 +196,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                     style={{
                       fontWeight: "500px",
                       fontFamily: "Inter",
-                      color: mode.darkMode ? "white" : "black",
+                      color: mode?.darkMode ? "white" : "black",
                     }}
                   >
                     {selectedRow?.name ? selectedRow.name : "Gabriele Morace"}
@@ -219,21 +221,21 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                         <KeyboardArrowDownIcon
                           style={{
                             fontSize: 40,
-                            color: mode.darkMode ? "white" : "black",
+                            color: mode?.darkMode ? "white" : "black",
                           }}
                         />
                       ) : (
                         <KeyboardArrowUpIcon
                           style={{
                             fontSize: 40,
-                            color: mode.darkMode ? "white" : "black",
+                            color: mode?.darkMode ? "white" : "black",
                           }}
                         />
                       )}
                     </div>
                     <div
                       onClick={handleDropDown}
-                      style={{ color: mode.darkMode ? "white" : "black" }}
+                      style={{ color: mode?.darkMode ? "white" : "black" }}
                     >
                       Record details
                     </div>
@@ -501,7 +503,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                             <button
                               style={{
                                 width: "100px",
-                                backgroundColor: mode.darkMode
+                                backgroundColor: mode?.darkMode
                                   ? "#0353CC"
                                   : "#008C5A",
                               }}
@@ -519,7 +521,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                             style={{
                               width: "100px",
                               // color: "#FFFFF",
-                              backgroundColor: mode.darkMode
+                              backgroundColor: mode?.darkMode
                                 ? "#0353CC"
                                 : "#008C5A",
                             }}
@@ -534,7 +536,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                         <button
                           className="text-l border border-slate-300 rounded-md p-2 w-full border-none"
                           style={{
-                            color: mode.darkMode ? "white" : "black",
+                            color: mode?.darkMode ? "white" : "black",
                           }}
                           onClick={() => handleAddOpenModal()}
                         >
@@ -543,7 +545,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                         <button
                           className="text-l border border-slate-300 rounded-md p-2 w-full border-none"
                           style={{
-                            color: mode.darkMode ? "white" : "black",
+                            color: mode?.darkMode ? "white" : "black",
                           }}
                           onClick={handleDelete}
                         >

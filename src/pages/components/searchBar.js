@@ -37,7 +37,7 @@ const SearchBar = () => {
         <input
           type="text"
           className="block pl-10 w-50 h-10 text-white-900  rounded-lg   "
-          style={{ backgroundColor: mode.darkMode ? "#292929" : "#FFFAF0" }}
+          style={{ backgroundColor: mode?.darkMode ? "#292929" : "#FFFAF0" }}
           placeholder="Search Here..."
           onFocus={handleFocus}
           onBlur={handleBlur}

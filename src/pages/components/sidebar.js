@@ -42,7 +42,7 @@ const Sidebar = ({
     if (selectedGroup._id === current._id) {
       setTitle(selectedGroup?.name);
       setShowDetail(false);
-      if (!mode.darkMode) {
+      if (!mode?.darkMode) {
         return "bg-[#FFFAF0] rounded";
       }
       return "bg-[#1A1A1A] rounded";
@@ -65,7 +65,7 @@ const Sidebar = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+        backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
       }}
     >
       <div style={{ justifyContent: "flex-start" }}>
@@ -73,7 +73,7 @@ const Sidebar = ({
           className="text-[20px] pl-2 pt-2 text-[#808080] ml-[22px] mt-[30px] cursor-pointer bg-[#292929] rounded-md border border-[#303030] w-[200px] h-[45px] "
           style={{
             display: "inline-flex",
-            backgroundColor: mode.darkMode ? "#292929" : "#FFFAF0",
+            backgroundColor: mode?.darkMode ? "#292929" : "#FFFAF0",
           }}
         >
           <div>
@@ -155,10 +155,9 @@ const Sidebar = ({
         <div
           className="ml-2  mb-5  text-[#808080]"
           onChange={() => {
-            mode.setDarkMode(!mode.darkMode);
+            mode?.setDarkMode(!mode?.darkMode);
           }}
         >
-          {console.log("dark mode: ", mode.darkMode)}
           <CustomizedSwitches />
         </div>
         <div className="ml-auto flex items-center pr-[15px] cursor-pointer">

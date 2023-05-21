@@ -54,10 +54,6 @@ const Table = ({
   const [selectedRow, setSelectedRow] = useState("");
   const mode = useContext(ThemeContext);
 
-  const borderColor = {
-    border: mode.dark ? "yellow " : "#D0D5DD",
-  };
-
   if (selectedGroup?.count > 1) {
     selectedGroup = selectedGroup.data;
   }
@@ -120,7 +116,7 @@ const Table = ({
           {/* <span className="ml-2 text-gray-800 font-medium pr-[10px] inline-flex text-white">
             <div className="m-auto text-[#808080]">Filter by &nbsp;</div>
             <div className="border border-10 border-[#303030] rounded-[8px] p-[4px] pl-[8px] pr-[8px] text-white"
-            style={{color: mode.darkMode ? 'white': 'black' }}>
+            style={{color: mode?.darkMode ? 'white': 'black' }}>
               Email all
             </div>
           </span> */}
@@ -191,7 +187,7 @@ const Table = ({
                   <td
                     className="fontSize p-[10px] pl-[40px] border border-[#303030]"
                     style={{
-                      ...(mode.darkMode == true
+                      ...(mode?.darkMode == true
                         ? document.body.style.setProperty(
                             "--foreground-rgb",
                             "255, 255, 255"

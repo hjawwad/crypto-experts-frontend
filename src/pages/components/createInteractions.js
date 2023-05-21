@@ -89,8 +89,8 @@ function CreateInteractions({
           </label>
           <input
             style={{
-              backgroundColor: mode.darkMode ? "#000" : "#fff",
-              color: mode.darkMode ? "#fff" : "#000",
+              backgroundColor: mode?.darkMode ? "#000" : "#fff",
+              color: mode?.darkMode ? "#fff" : "#000",
             }}
             type="name"
             className="w-full text-xl border border-slate-300 rounded-[8px] p-2 pl-5"
@@ -109,8 +109,8 @@ function CreateInteractions({
           </label>
           <input
             style={{
-              backgroundColor: mode.darkMode ? "#000" : "#fff",
-              color: mode.darkMode ? "#fff" : "#000",
+              backgroundColor: mode?.darkMode ? "#000" : "#fff",
+              color: mode?.darkMode ? "#fff" : "#000",
             }}
             type="date"
             className="mr-[-30px] text-center  bg-black text-xl border border-slate-300 rounded-[8px] p-2 pl-5"
@@ -130,8 +130,8 @@ function CreateInteractions({
           </label>
           <input
             style={{
-              backgroundColor: mode.darkMode ? "#000" : "#fff",
-              color: mode.darkMode ? "#fff" : "#000",
+              backgroundColor: mode?.darkMode ? "#000" : "#fff",
+              color: mode?.darkMode ? "#fff" : "#000",
             }}
             type="name"
             className="text-center bg-black text-xl border border-slate-300 rounded-[8px] bg-black p-2 pl-5"
@@ -147,8 +147,8 @@ function CreateInteractions({
           </label>
           <textarea
             style={{
-              backgroundColor: mode.darkMode ? "#000" : "#fff",
-              color: mode.darkMode ? "#fff" : "#000",
+              backgroundColor: mode?.darkMode ? "#000" : "#fff",
+              color: mode?.darkMode ? "#fff" : "#000",
             }}
             className="w-full bg-black p-[13px] pl-[34px] pr-[34px] rounded-[8px]  border border-slate-300"
             id="message"
@@ -161,8 +161,8 @@ function CreateInteractions({
         </div>
         <button
           style={{
-            backgroundColor: mode.darkMode ? "#fff" : "#000",
-            color: mode.darkMode ? "#000" : "#fff",
+            backgroundColor: mode?.darkMode ? "#fff" : "#000",
+            color: mode?.darkMode ? "#000" : "#fff",
           }}
           onClick={onRequestClose}
           className="w-[100px] fixed bottom-0  mb-8 ml-8 p-4 rounded-[8px] text-black bg-white border border-white"
@@ -171,7 +171,7 @@ function CreateInteractions({
         </button>
         <button
           style={{
-            backgroundColor: mode.darkMode ? "#000" : "#008C5A",
+            backgroundColor: mode?.darkMode ? "#000" : "#008C5A",
             color: "#fff",
           }}
           onClick={handleSubmit}

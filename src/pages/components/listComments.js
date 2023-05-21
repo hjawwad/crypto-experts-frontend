@@ -69,11 +69,11 @@ const ListComments = ({ setChange }) => {
             className="flex justify-between items-center border border-[#303030] rounded-[8px] m-3 p-[13px] pl-[46px] pr-[26px] mb-[20px]"
           >
             <div>
-              <p style={{ color: mode.darkMode ? "#505050" : "#000" }}>
+              <p style={{ color: mode?.darkMode ? "#505050" : "#000" }}>
                 {getCommentDate(item.created)}
               </p>
               <p
-                style={{ color: mode.darkMode ? "#fff" : "#000" }}
+                style={{ color: mode?.darkMode ? "#fff" : "#000" }}
                 className="pt-[10px] pb-[13px]"
               >
                 {item.comment}
@@ -92,7 +92,7 @@ const ListComments = ({ setChange }) => {
         ))}
       <button
         onClick={onCreateComment}
-        style={{ color: mode.darkMode ? "#fff" : "#000" }}
+        style={{ color: mode?.darkMode ? "#fff" : "#000" }}
         className="fixed bottom-0 right-0 mb-8 mr-8 p-4 rounded-full " //
       >
         Create new

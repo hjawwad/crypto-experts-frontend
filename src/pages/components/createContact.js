@@ -52,13 +52,13 @@ function CreateContact({
     content: {
       maxWidth: "495px",
       width: "700px",
-      backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+      backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
     },
     overlay: {},
   };
 
   const customBackground = {
-    backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+    backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
   };
 
   useEffect(() => {
@@ -207,7 +207,9 @@ function CreateContact({
         className=" w-full pt-1 pl-2 "
         style={{
           overflow: "hidden",
-          backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+          backgroundColor: mode?.darkMode
+            ? mode?.color.dark
+            : mode?.color.white,
         }}
       >
         <h1 style={{ fontSize: "18px", fontWeight: "700" }}>Create persona</h1>
