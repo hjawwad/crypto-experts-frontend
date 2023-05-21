@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import TabMenu from "./components/tabmenu";
 import { getCompany } from "./api/register";
@@ -22,6 +22,8 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import BusinessIcon from "@mui/icons-material/Business";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonCircleIcon from "./components/svg-icons/person-icon";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { ThemeContext } from "./dashboard";
 
 var moment = require("moment");
 
@@ -60,6 +62,12 @@ function ContactDetail({ setTableShow, setShowDetail }) {
   const [fields, setFields] = useState([]);
   const [addField, setAddField] = useState(false);
   const [dropdown, setDropDown] = useState(true);
+  const mode = useContext(ThemeContext);
+
+  const rowStyle = {
+    backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+    color: mode.darkMode ? "#808080" : "#FFFFF",
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -149,12 +157,20 @@ function ContactDetail({ setTableShow, setShowDetail }) {
     setIsModalOpen(false);
   };
 
+  const handleDropDown = () => {
+    setDropDown(!dropdown);
+  };
   const handleAddOpenModal = () => setIsAddModal(true);
 
   const handleAddCloseModal = () => setIsAddModal(false);
 
   return (
-    <div className="bg-[#1f1f1f] w-full">
+    <div
+      className=" w-full"
+      style={{
+        backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+      }}
+    >
       {selectedRow && (
         <>
           <div className="flex w-full">
@@ -173,7 +189,14 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                       <PersonCircleIcon />
                     )}
                   </div>
-                  <div className="pl-5 pt-1" style={{ fontWeight: "500px" }}>
+                  <div
+                    className="pl-5 pt-1"
+                    style={{
+                      fontWeight: "500px",
+                      fontFamily: "Inter",
+                      color: mode.darkMode ? "white" : "black",
+                    }}
+                  >
                     {selectedRow?.name ? selectedRow.name : "Gabriele Morace"}
                   </div>
                 </div>
@@ -189,12 +212,31 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                   borderRight: "2px solid #3A3A3A",
                 }}
               >
-                <div className="items-center justify-center mx-auto pt-[22px]">
+                <div className="items-center justify-center pt-[22px]">
                   <div className="flex text-[25px] ml-5">
-                    <div>
-                      <KeyboardArrowDownIcon style={{ fontSize: 40 }} />
+                    <div onClick={handleDropDown}>
+                      {dropdown ? (
+                        <KeyboardArrowDownIcon
+                          style={{
+                            fontSize: 40,
+                            color: mode.darkMode ? "white" : "black",
+                          }}
+                        />
+                      ) : (
+                        <KeyboardArrowUpIcon
+                          style={{
+                            fontSize: 40,
+                            color: mode.darkMode ? "white" : "black",
+                          }}
+                        />
+                      )}
                     </div>
-                    <div>Record details</div>
+                    <div
+                      onClick={handleDropDown}
+                      style={{ color: mode.darkMode ? "white" : "black" }}
+                    >
+                      Record details
+                    </div>
                   </div>
                   {dropdown && (
                     <>
@@ -212,7 +254,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   </div>
                                   <input
                                     disabled="true"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     id="name"
                                     value={selectedRow?.name}
                                     placeholder="Name & Surname"
@@ -228,8 +271,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   </div>
                                   <input
                                     disabled="true"
-                                    type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.tag}
                                     placeholder="Where did we meet?"
                                   />
@@ -244,7 +287,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.meet}
                                     placeholder="Where did we meet?"
                                   />
@@ -265,7 +309,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                           )
                                         : ""
                                     }
-                                    className="pb-[6px] pt-[5px] text-l text-[#ABABAB] border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     placeholder="Birthday"
                                   />
                                 </div>
@@ -279,7 +324,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.phone}
                                     placeholder="Phone"
                                   />
@@ -294,7 +340,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.city}
                                     placeholder="City"
                                   />
@@ -309,7 +356,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.country}
                                     placeholder="Country"
                                   />
@@ -324,7 +372,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.linkedin}
                                     placeholder="LinkedIn"
                                   />
@@ -339,7 +388,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.twitter}
                                     placeholder="Twitter"
                                   />
@@ -354,7 +404,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="email"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5 "
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5 "
+                                    style={rowStyle}
                                     value={selectedRow?.email}
                                     placeholder="Email"
                                   />
@@ -369,7 +420,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
                                     value={selectedRow?.job}
                                     placeholder="Job"
                                   />
@@ -384,8 +436,9 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
-                                    value={selectedRow?.company_name}
+                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    style={rowStyle}
+                                    value={selectedRow?.company}
                                     placeholder="Company"
                                   />
                                 </div>
@@ -398,12 +451,16 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                         selectedRow.newField.map((field, index) => (
                           <div key={index} style={{ display: "flex" }}>
                             <label
+                              style={rowStyle}
                               htmlFor={`name-${index}`}
-                              className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                              className="text-l border-slate-300 rounded-md ml-5"
                             >
                               {field[Object.keys(field)[0]]}
                             </label>
-                            <p className="text-l border-slate-300 rounded-md bg-[#1f1f1f] ml-5">
+                            <p
+                              style={rowStyle}
+                              className="text-l border-slate-300 rounded-md ml-5"
+                            >
                               {field[Object.keys(field)[1]]}
                             </p>
                           </div>
@@ -412,23 +469,29 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                       <form onSubmit={handleSubmit}>
                         {fields.map((field, index) => (
                           <div key={index} className="ml-[70px] ">
-                            <label htmlFor={`name-${index}`}>Name:</label>
+                            <label style={rowStyle} htmlFor={`name-${index}`}>
+                              Name:
+                            </label>
                             <input
                               className="w-full bg-[#1f1f1f] text-l text-white border border-slate-300 rounded-[16px] bg-[#1f1f1f] p-2 pl-5"
                               type="text"
                               id={`name-${index}`}
                               name="name"
+                              style={rowStyle}
                               value={field.name}
                               onChange={(event) =>
                                 handleInputChange(event, index)
                               }
                             />
-                            <label htmlFor={`value-${index}`}>Value:</label>
+                            <label style={rowStyle} htmlFor={`value-${index}`}>
+                              Value:
+                            </label>
                             <input
                               type="text"
                               className="w-full bg-[#1f1f1f] text-white text-l border border-slate-300 rounded-[16px] bg-[#1f1f1f] p-2 pl-5"
                               id={`value-${index}`}
                               name="value"
+                              style={rowStyle}
                               value={field.value}
                               onChange={(event) =>
                                 handleInputChange(event, index)
@@ -436,7 +499,13 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                             />
 
                             <button
-                              className="text-l border border-slate-300  ml-[70px] rounded-md p-2 w-full border-none"
+                              style={{
+                                width: "100px",
+                                backgroundColor: mode.darkMode
+                                  ? "#0353CC"
+                                  : "#008C5A",
+                              }}
+                              className="text-l border border-slate-300 mt-3 rounded-md p-2 w-full border-none"
                               type="submit"
                             >
                               Save
@@ -445,9 +514,15 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                         ))}
                         {!fields.length && (
                           <button
-                            className="text-[15px] mt-[15px] ml-[70px] border border-slate-300 bg-[#0353CC] rounded-[15px] p-2 w-full border-none"
+                            className="text-[15px] text-white ml-[70px] border border-slate-300  rounded-[15px] p-2 w-full border-none"
                             type="button"
-                            style={{ width: "100px" }}
+                            style={{
+                              width: "100px",
+                              // color: "#FFFFF",
+                              backgroundColor: mode.darkMode
+                                ? "#0353CC"
+                                : "#008C5A",
+                            }}
                             onClick={handleAddField}
                           >
                             New Field
@@ -458,12 +533,18 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                       <div style={{ display: "inline-flex" }}>
                         <button
                           className="text-l border border-slate-300 rounded-md p-2 w-full border-none"
+                          style={{
+                            color: mode.darkMode ? "white" : "black",
+                          }}
                           onClick={() => handleAddOpenModal()}
                         >
                           Edit
                         </button>
                         <button
                           className="text-l border border-slate-300 rounded-md p-2 w-full border-none"
+                          style={{
+                            color: mode.darkMode ? "white" : "black",
+                          }}
                           onClick={handleDelete}
                         >
                           Delete

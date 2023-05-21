@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import CreateGroup from "./createGroup";
+import { getAllGroups } from "../api/register";
+import Cookies from "js-cookie";
 import SearchBar from "./searchBar";
 import GroupIcon from "./svg-icons/group-icon";
 import ProfileIcon from "./svg-icons/profile-icon";
 import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import LogoutCard from "./svg-icons/logout-card";
+import CustomizedSwitches from "./svg-icons/darkMode";
+import { ThemeContext } from "../dashboard";
 
 const Sidebar = ({
   setSelectedGroup,
@@ -20,8 +24,8 @@ const Sidebar = ({
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [addGroup, setAddGroup] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selected, setSelected] = useState(false);
+
+  const mode = useContext(ThemeContext);
 
   const router = useRouter();
   const toggleDropdown = () => {
@@ -38,6 +42,9 @@ const Sidebar = ({
     if (selectedGroup._id === current._id) {
       setTitle(selectedGroup?.name);
       setShowDetail(false);
+      if (!mode.darkMode) {
+        return "bg-[#FFFAF0] rounded";
+      }
       return "bg-[#1A1A1A] rounded";
     }
     return "";
@@ -58,6 +65,7 @@ const Sidebar = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
       }}
     >
       <div style={{ justifyContent: "flex-start" }}>
@@ -65,6 +73,7 @@ const Sidebar = ({
           className="text-[20px] pl-2 pt-2 text-[#808080] ml-[22px] mt-[30px] cursor-pointer bg-[#292929] rounded-md border border-[#303030] w-[200px] h-[45px] "
           style={{
             display: "inline-flex",
+            backgroundColor: mode.darkMode ? "#292929" : "#FFFAF0",
           }}
         >
           <div>
@@ -141,8 +150,17 @@ const Sidebar = ({
           </div>
         </div>
       </div>
-      <div style={{ justifyContent: "flex-end" }}>
+      <div style={{ justifyContent: "flex-end", minHeight: "80px" }}>
         <div className="ml-3 text-[18px] mb-5  text-[#808080]">Settings</div>
+        <div
+          className="ml-2  mb-5  text-[#808080]"
+          onChange={() => {
+            mode.setDarkMode(!mode.darkMode);
+          }}
+        >
+          {console.log("dark mode: ", mode.darkMode)}
+          <CustomizedSwitches />
+        </div>
         <div className="ml-auto flex items-center pr-[15px] cursor-pointer">
           <span className="ml-2 text-gray-800 font-medium pr-[15px] text-white">
             <LogoutCard />

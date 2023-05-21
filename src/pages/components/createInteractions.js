@@ -1,6 +1,7 @@
 import ReactModal from "react-modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { createInteraction, updateInteractionById } from "../api/register";
+import { ThemeContext } from "../dashboard";
 
 ReactModal.setAppElement("#__next");
 
@@ -25,6 +26,8 @@ function CreateInteractions({
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
+  const mode = useContext(ThemeContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     let response = "";
@@ -37,7 +40,7 @@ function CreateInteractions({
           description: description,
         });
 
-        setSuccessMessage("Login successful!");
+        setSuccessMessage("Create Interaction successful!");
         setError(null);
         handleLoginClick();
       } else {
@@ -52,12 +55,12 @@ function CreateInteractions({
           interaction._id
         );
 
-        setSuccessMessage("Login successful!");
+        setSuccessMessage("Update Interaction successfully!");
         setError(null);
         handleLoginClick();
       }
     } catch (error) {
-      setError("Create Comment failed. Please try again later.");
+      setError("Create Interaction failed. Please try again later.");
       setSuccessMessage(null);
     }
     onRequestClose();
@@ -79,14 +82,18 @@ function CreateInteractions({
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <form
-        onSubmit={handleSubmit}
-        className="p-[16px] pl-[55px] pr-[55px] text-center"
-      >
+      <form onSubmit={handleSubmit} className="p-[16px] pl-[55px] pr-[55px] ">
         <div className="pb-[47px]">
+          <label className="pb-[6px] text-[#999999] text-xl " htmlFor="email">
+            Event Name
+          </label>
           <input
+            style={{
+              backgroundColor: mode.darkMode ? "#000" : "#fff",
+              color: mode.darkMode ? "#fff" : "#000",
+            }}
             type="name"
-            className="w-full bg-black text-xl border border-slate-300 rounded-[16px] bg-black p-2 pl-5"
+            className="w-full text-xl border border-slate-300 rounded-[8px] p-2 pl-5"
             id="name"
             placeholder="Name of the event"
             onChange={(event) => setEventName(event.target.value)}
@@ -98,11 +105,15 @@ function CreateInteractions({
             className="pb-[6px] text-[#999999] text-xl mr-[17px]"
             htmlFor="email"
           >
-            <b>Date</b>
+            Date
           </label>
           <input
+            style={{
+              backgroundColor: mode.darkMode ? "#000" : "#fff",
+              color: mode.darkMode ? "#fff" : "#000",
+            }}
             type="date"
-            className="mr-[-30px] text-center w-[155px] bg-black text-xl border border-slate-300 rounded-[12px] bg-black p-2 pl-5"
+            className="mr-[-30px] text-center  bg-black text-xl border border-slate-300 rounded-[8px] p-2 pl-5"
             id="name"
             placeholder="date"
             onChange={(event) => setDate(event.target.value)}
@@ -111,40 +122,62 @@ function CreateInteractions({
         </div>
         <div className="pb-[57px]">
           <label
+            style={{ width: "300px" }}
             className="pb-[6px] text-[#999999] text-xl mr-[17px]"
             htmlFor="email"
           >
-            <b>Location</b>
+            Location
           </label>
           <input
+            style={{
+              backgroundColor: mode.darkMode ? "#000" : "#fff",
+              color: mode.darkMode ? "#fff" : "#000",
+            }}
             type="name"
-            className="text-center w-[155px] bg-black text-xl border border-slate-300 rounded-[12px] bg-black p-2 pl-5"
+            className="text-center bg-black text-xl border border-slate-300 rounded-[8px] bg-black p-2 pl-5"
             id="name"
             placeholder="location"
             onChange={(event) => setLocation(event.target.value)}
             value={location}
           />
         </div>
-        <textarea
-          className="w-full bg-black p-[13px] pl-[34px] pr-[34px]  border border-slate-300"
-          id="message"
-          name="message"
-          rows="5"
-          placeholder="Description"
-          onChange={(event) => setDescription(event.target.value)}
-          value={description}
-        ></textarea>
+        <div>
+          <label className="pb-[6px] text-[#999999] text-xl " htmlFor="email">
+            Description
+          </label>
+          <textarea
+            style={{
+              backgroundColor: mode.darkMode ? "#000" : "#fff",
+              color: mode.darkMode ? "#fff" : "#000",
+            }}
+            className="w-full bg-black p-[13px] pl-[34px] pr-[34px] rounded-[8px]  border border-slate-300"
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Description"
+            onChange={(event) => setDescription(event.target.value)}
+            value={description}
+          ></textarea>
+        </div>
         <button
+          style={{
+            backgroundColor: mode.darkMode ? "#fff" : "#000",
+            color: mode.darkMode ? "#000" : "#fff",
+          }}
           onClick={onRequestClose}
-          className="w-1/3 fixed bottom-0 left-0 mb-8 ml-8 p-4 rounded-[8px] text-black bg-white rounded-[8px] border border-white"
+          className="w-[100px] fixed bottom-0  mb-8 ml-8 p-4 rounded-[8px] text-black bg-white border border-white"
         >
-          <b>Cancel</b>
+          Cancel
         </button>
         <button
+          style={{
+            backgroundColor: mode.darkMode ? "#000" : "#008C5A",
+            color: "#fff",
+          }}
           onClick={handleSubmit}
-          className="w-1/2 fixed bottom-0 right-0 mb-8 mr-8 p-4 text-white"
+          className="w-[100px] fixed bottom-0 rounded-[8px] right-0 mb-8 mr-8 p-4 text-white"
         >
-          <b>Save</b>
+          Save
         </button>
       </form>
     </ReactModal>

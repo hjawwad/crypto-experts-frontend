@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Modal from "./modal";
 import CreateContact from "./createContact";
-import { useState, useEffect } from "react";
-import { getCompany, deleteGroupById } from "../api/register";
-import DropDownMenu from "./dropDownMenu";
+import { useState, useEffect, useContext } from "react";
+import { getCompany } from "../api/register";
+import { useRouter } from "next/router";
+import { ThemeContext } from "../dashboard";
 var moment = require("moment");
 
 const CompanyName = ({ companyId }) => {
@@ -44,13 +45,18 @@ const Table = ({
   data,
   selectedGroup,
   setAdded,
-  getAllGroupNames,
   setTableShow,
   setShowDetail,
 }) => {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModal, setIsAddModal] = useState(false);
   const [selectedRow, setSelectedRow] = useState("");
+  const mode = useContext(ThemeContext);
+
+  const borderColor = {
+    border: mode.dark ? "yellow " : "#D0D5DD",
+  };
 
   if (selectedGroup?.count > 1) {
     selectedGroup = selectedGroup.data;
@@ -61,6 +67,11 @@ const Table = ({
     setTableShow(false);
     setShowDetail(true);
     localStorage.setItem("selectedRow", JSON.stringify(item));
+    // router.push({
+    //   pathname: "/contactDetail",
+    //   query: { selectedGroup: selectedGroup._id },
+    // });
+    // setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
@@ -74,14 +85,6 @@ const Table = ({
 
   const handleAddCloseModal = () => {
     setIsAddModal(false);
-  };
-
-  const handleDelete = async (group_id) => {
-    const data = await deleteGroupById(group_id);
-    if (data.status) {
-      getAllGroupNames();
-    }
-    return data;
   };
 
   const statusColor = (status) => {
@@ -113,20 +116,14 @@ const Table = ({
             <div className="font-medium">{`${data?.length} PEOPLE`}</div>
           </nav> */}
         {/* </div> */}
-        <div className="ml-auto flex items-center ">
+        <div className="ml-auto flex items-center">
           {/* <span className="ml-2 text-gray-800 font-medium pr-[10px] inline-flex text-white">
             <div className="m-auto text-[#808080]">Filter by &nbsp;</div>
-            <div className="border border-10 border-[#303030] rounded-[8px] p-[4px] pl-[8px] pr-[8px] text-white">
+            <div className="border border-10 border-[#303030] rounded-[8px] p-[4px] pl-[8px] pr-[8px] text-white"
+            style={{color: mode.darkMode ? 'white': 'black' }}>
               Email all
             </div>
           </span> */}
-          <DropDownMenu
-            handleDelete={handleDelete}
-            onEditGroup={setIsModalOpen}
-            getAllGroupNames={getAllGroupNames}
-            group={true}
-            item={selectedGroup}
-          />
           <div
             onClick={handleAddOpenModal}
             className="cursor-pointer text-md text-right flex-1 border border-10 border-[#303030] rounded-[8px] p-[4px] pl-[8px] pr-[8px]"
@@ -191,7 +188,20 @@ const Table = ({
                   className="cursor-pointer"
                   onClick={() => handleOpenModal(item)}
                 >
-                  <td className="fontSize p-[10px] border border-[#303030]">
+                  <td
+                    className="fontSize p-[10px] pl-[40px] border border-[#303030]"
+                    style={{
+                      ...(mode.darkMode == true
+                        ? document.body.style.setProperty(
+                            "--foreground-rgb",
+                            "255, 255, 255"
+                          )
+                        : document.body.style.setProperty(
+                            "--foreground-rgb",
+                            "0, 0, 0"
+                          )),
+                    }}
+                  >
                     {item.name ? item.name : ""}
                   </td>
                   <td className="fontSize p-[10px] border border-[#303030] whitespace-nowrap overflow-hidden">

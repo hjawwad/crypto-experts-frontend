@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { createContactByGroup, updateContactByGroup } from "../api/register";
 import showErrorAlert from "./utility/showErrorAlert";
 import showSuccessAlert from "./utility/showSuccessAlert";
@@ -14,9 +14,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import BusinessIcon from "@mui/icons-material/Business";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 var moment = require("moment");
+import { ThemeContext } from "../dashboard";
 import Cross from "./../../../public/cross.svg";
 import Image from "next/image";
 
@@ -31,13 +31,6 @@ function CreateContact({
   setUpdated,
   buttonText,
 }) {
-  const customStyles = {
-    content: {
-      maxWidth: "495px",
-      width: "700px",
-    },
-    overlay: {},
-  };
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [phone, setPhone] = useState("");
@@ -50,17 +43,23 @@ function CreateContact({
   const [university, setUniversity] = useState("");
   const [meet, setMeet] = useState("");
   const [dob, setDOB] = useState("");
-  const [connections, setConnections] = useState([]);
   const [linkedin, setLinkedIn] = useState("");
   const [twitter, setTwitter] = useState("");
   const [company, setCompany] = useState("");
-  // const [companies, setCompanies] = useState([{ name: "", logo: null }]);
-  const [bday, setBday] = useState("Birthday");
-  const options = [
-    { value: "To contact", label: "To contact" },
-    { value: "Phoned", label: "Phoned" },
-    { value: "Meet-up", label: "Meet-up" },
-  ];
+  const mode = useContext(ThemeContext);
+
+  const customStyles = {
+    content: {
+      maxWidth: "495px",
+      width: "700px",
+      backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+    },
+    overlay: {},
+  };
+
+  const customBackground = {
+    backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+  };
 
   useEffect(() => {
     if (buttonText === "Update" && selectedRow) {
@@ -205,8 +204,11 @@ function CreateContact({
       overlayClassName="p-0"
     >
       <div
-        className="bg-[#1f1f1f] w-full pt-1 pl-2 "
-        style={{ overflow: "hidden" }}
+        className=" w-full pt-1 pl-2 "
+        style={{
+          overflow: "hidden",
+          backgroundColor: mode.darkMode ? mode.color.dark : mode.color.white,
+        }}
       >
         <h1 style={{ fontSize: "18px", fontWeight: "700" }}>Create persona</h1>
         <div className="w-full p-[20px] pb-[5px]">
@@ -223,7 +225,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="name"
                       onChange={(e) => setName(e.target.value)}
                       value={name}
@@ -239,7 +242,8 @@ function CreateContact({
                     </div>
                     <input
                       type="email"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5 "
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5 "
+                      style={customBackground}
                       id="name"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
@@ -256,7 +260,8 @@ function CreateContact({
 
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="name"
                       onChange={(e) => setTag(e.target.value)}
                       value={tag}
@@ -272,7 +277,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="name"
                       onChange={(e) => setMeet(e.target.value)}
                       value={meet}
@@ -286,7 +292,7 @@ function CreateContact({
                     <div className="pb-[6px] text-[#6A6A6A]">
                       <CakeIcon />
                     </div>
-                    <DatePicker
+                    {/* <DatePicker
                       dateFormat="dd-MM-yyyy"
                       selected={dob}
                       value={
@@ -295,9 +301,9 @@ function CreateContact({
                           : "Birthday"
                       }
                       onChange={(date) => handleBOD(date)}
-                      className="pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md  ml-5"
                       // useWeekdaysShort={true}
-                    />
+                    /> */}
                   </div>
                   <div
                     className="pb-[25px] mr-[5px]"
@@ -308,7 +314,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="phone"
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
@@ -324,7 +331,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="city"
                       onChange={(e) => setCity(e.target.value)}
                       value={city}
@@ -340,7 +348,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="country"
                       onChange={(e) => setCountry(e.target.value)}
                       value={country}
@@ -356,7 +365,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="linkedin"
                       onChange={(e) => setLinkedIn(e.target.value)}
                       value={linkedin}
@@ -372,7 +382,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="twitter"
                       onChange={(e) => setTwitter(e.target.value)}
                       value={twitter}
@@ -388,7 +399,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="job"
                       onChange={(e) => setJob(e.target.value)}
                       value={job}
@@ -404,7 +416,8 @@ function CreateContact({
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md bg-[#1f1f1f] ml-5"
+                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      style={customBackground}
                       id="company"
                       onChange={(e) => setCompany(e.target.value)}
                       value={company}
@@ -415,7 +428,7 @@ function CreateContact({
                     <button
                       type="submit"
                       className="text-xl border border-slate-300 rounded-md p-2  border-none"
-                      style={{ backgroundColor: "#0353CC" }}
+                      style={{ customBackground, backgroundColor: "#0353CC" }}
                     >
                       {isLoading ? "Creating" : buttonText}
                     </button>

@@ -4,14 +4,17 @@ import {
   deleteCommentById,
   getAllComments,
 } from "../api/register";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CreateComment from "./createComment";
+import { ThemeContext } from "../dashboard";
 
 const ListComments = ({ setChange }) => {
   const [selectedRow, setSelectedRow] = useState({});
   const [data, setData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState(null);
+
+  const mode = useContext(ThemeContext);
 
   const getCommentDate = (currentDate) => {
     const date = new Date(currentDate);
@@ -66,8 +69,15 @@ const ListComments = ({ setChange }) => {
             className="flex justify-between items-center border border-[#303030] rounded-[8px] m-3 p-[13px] pl-[46px] pr-[26px] mb-[20px]"
           >
             <div>
-              <p className="text-[#303030]">{getCommentDate(item.created)}</p>
-              <p className="pt-[10px] pb-[13px]">{item.comment}</p>
+              <p style={{ color: mode.darkMode ? "#505050" : "#000" }}>
+                {getCommentDate(item.created)}
+              </p>
+              <p
+                style={{ color: mode.darkMode ? "#fff" : "#000" }}
+                className="pt-[10px] pb-[13px]"
+              >
+                {item.comment}
+              </p>
             </div>
             <DropDownMenu
               onEditComment={onCreateComment}
@@ -82,7 +92,8 @@ const ListComments = ({ setChange }) => {
         ))}
       <button
         onClick={onCreateComment}
-        className="fixed bottom-0 right-0 mb-8 mr-8 p-4 rounded-full text-white" //
+        style={{ color: mode.darkMode ? "#fff" : "#000" }}
+        className="fixed bottom-0 right-0 mb-8 mr-8 p-4 rounded-full " //
       >
         Create new
       </button>

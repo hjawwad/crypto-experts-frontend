@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   ClickAwayListener,
@@ -14,6 +14,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import showSuccessAlert from "./utility/showSuccessAlert";
 import showErrorAlert from "./utility/showErrorAlert";
 import CreateGroup from "./createGroup";
+import { ThemeContext } from "../dashboard";
 
 const DropDownMenu = ({
   handleDelete,
@@ -30,6 +31,8 @@ const DropDownMenu = ({
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [addGroup, setAddGroup] = useState(false);
+
+  const mode = useContext(ThemeContext);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -108,12 +111,12 @@ const DropDownMenu = ({
   return (
     <>
       <Button
+        style={{ fontSize: "25px", color: mode.darkMode ? "#fff" : "#000" }}
         ref={anchorRef}
         id="composition-button"
         aria-controls={open ? "composition-menu" : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
-        style={{ fontSize: "25px", color: "#fff" }}
         onClick={handleToggle}
       >
         ...
@@ -132,7 +135,7 @@ const DropDownMenu = ({
             style={{
               transformOrigin:
                 placement === "bottom-start" ? "left top" : "left bottom",
-              backgroundColor: "#2B2B2B",
+              backgroundColor: mode.darkMode ? "#2B2B2B" : "#fff",
             }}
           >
             <Paper>
@@ -148,7 +151,12 @@ const DropDownMenu = ({
                     <span style={{ marginLeft: "5px" }}>Edit</span>
                   </MenuItem>
                   <MenuItem
-                    style={{ color: "red" }}
+                    style={{
+                      color: mode.darkMode ? "#BC0000" : "#fff",
+                      backgroundColor: mode.darkMode ? "" : "#BC0000",
+                      margin: "5px",
+                      borderRadius: "5px",
+                    }}
                     onClick={handleDeleteClick}
                   >
                     <DeleteIcon />

@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import CommandIcon from "./svg-icons/command-icon";
 import KIcon from "./svg-icons/k-icon";
+import { ThemeContext } from "../dashboard";
 
 const SearchBar = () => {
   const clickPoint = useRef();
+  const mode = useContext(ThemeContext);
   const handleFocus = () => {
     clickPoint.current.style.display = "none";
   };
@@ -17,7 +19,7 @@ const SearchBar = () => {
       className="items-center px-4 flex justify-center mb-5"
       style={{ marginBottom: "40px" }}
     >
-      <div className="relative mr-5  border-slate-300 rounded-md bg-black ml-5 ">
+      <div className="relative mr-5  border-slate-300 rounded-md  ml-5 ">
         <div className="absolute top-3 left-3 items-center " ref={clickPoint}>
           <svg
             className="w-5 h-5 text-gray-500"
@@ -34,20 +36,27 @@ const SearchBar = () => {
         </div>
         <input
           type="text"
-          className="block pl-10 w-50 h-10 text-white-900 bg-[#141414] rounded-lg  border-gray-300 "
+          className="block pl-10 w-50 h-10 text-white-900  rounded-lg   "
+          style={{ backgroundColor: mode.darkMode ? "#292929" : "#FFFAF0" }}
           placeholder="Search Here..."
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
         <div
-          className="absolute border-slate-300 rounded-md bg-black ml-5"
-          style={{ right: 5, top: 7 }}
+          className="absolute border-slate-300 rounded-md  ml-5"
+          style={{
+            right: 5,
+            top: 7,
+          }}
         >
-          <KIcon/>
+          <KIcon />
         </div>
         <div
-          className="absolute border-slate-300 rounded-md bg-black ml-5"
-          style={{ right: 35, top: 7 }}
+          className="absolute border-slate-300 rounded-md  ml-5"
+          style={{
+            right: 35,
+            top: 7,
+          }}
         >
           <CommandIcon />
         </div>

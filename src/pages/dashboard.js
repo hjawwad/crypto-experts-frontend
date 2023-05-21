@@ -1,16 +1,17 @@
+import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
+import { createContext } from "react";
 import Table from "./components/table";
 import Sidebar from "./components/sidebar";
 import Image from "next/image";
 import withAuth from "./components/withAuth";
-import { getAllGroups } from "./api/register";
 import { useRouter } from "next/router";
+import { getAllContactsByGroup, getAllGroups } from "./api/register";
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
-import { getAllContactsByGroup } from "./api/register";
 import ContactDetail from "./contactDetail";
 
 const inter = Inter({ subsets: ["latin"] });
+export const ThemeContext = createContext();
 
 function Dashboard() {
   const router = useRouter();
@@ -25,14 +26,8 @@ function Dashboard() {
   const [tableShow, setTableShow] = useState(true);
   const token = Cookies.get("session_token");
   const [showDetail, setShowDetail] = useState(false);
-
-  // const handleLogout = (e) => {
-  //   e.preventDefault();
-  //   // clear the token from cookies
-  //   destroyCookie(null, "session_token");
-  //   // redirect to the login page
-  //   router.push("/");
-  // };
+  const [darkMode, setDarkMode] = useState(true);
+  const color = { white: "#FFFFFF", dark: "#1f1f1f" };
 
   const getAllContacts = async () => {
     setIsLoading(true);
@@ -83,20 +78,29 @@ function Dashboard() {
   }, [selectedGroup]);
 
   return (
-    <div className="flex min-h-screen flex-row">
-      <Sidebar
-        title="Click me"
-        setSelectedGroup={setSelectedGroup}
-        selectedGroup={selectedGroup}
-        added={added}
-        data={data}
-        getAllGroupNames={getAllGroupNames}
-        setTitle={setTitle}
-        setTableShow={setTableShow}
-        setShowDetail={setShowDetail}
-      />
-      <div className="w-full">
-        {tableShow && (
+    <ThemeContext.Provider value={{ darkMode, setDarkMode, color }}>
+      <div
+        className="flex min-h-screen flex-row"
+        style={{ backgroundColor: darkMode ? color.dark : color.white }}
+      >
+        <Sidebar
+          title="Click me"
+          setSelectedGroup={setSelectedGroup}
+          selectedGroup={selectedGroup}
+          added={added}
+          data={data}
+          getAllGroupNames={getAllGroupNames}
+          setTitle={setTitle}
+          setTableShow={setTableShow}
+          setShowDetail={setShowDetail}
+        />
+        <div
+          className="w-full"
+          style={{
+            backgroundColor: darkMode ? color.dark : color.white,
+            borderColor: darkMode ? "#303030 " : "#D0D5DD",
+          }}
+        >
           <header className="flex items-center p-4 pl-[50px]">
             <div className="flex-shrink-0">
               <Image
@@ -108,7 +112,14 @@ function Dashboard() {
               />
             </div>
             <nav className="ml-6 flex space-x-4">
-              <div className="font-medium text-[24px]">{title}</div>
+              <div
+                className="font-medium text-[24px]"
+                style={{
+                  color: darkMode ? "#FFFAF0" : "#3A3A3A",
+                }}
+              >
+                {title}
+              </div>
             </nav>
             {/* <div className="ml-auto flex items-center pr-[15px] cursor-pointer">
             <span className="ml-2 text-gray-800 font-medium pr-[15px] text-white">
@@ -117,26 +128,25 @@ function Dashboard() {
             <div onClick={handleLogout}>...</div>
           </div> */}
           </header>
-        )}
-        {tableShow ? (
-          <Table
-            data={contactData === "" ? selectedGroup?.data : contactData}
-            selectedGroup={selectedGroup}
-            added={added}
-            setAdded={setAdded}
-            getAllGroupNames={getAllGroupNames}
-            setTableShow={setTableShow}
-            setShowDetail={setShowDetail}
-          />
-        ) : (
-          <ContactDetail
-            setTableShow={setTableShow}
-            setShowDetail={setShowDetail}
-          />
-        )}
+          {tableShow ? (
+            <Table
+              data={contactData === "" ? selectedGroup?.data : contactData}
+              selectedGroup={selectedGroup}
+              added={added}
+              setAdded={setAdded}
+              getAllGroupNames={getAllGroupNames}
+              setTableShow={setTableShow}
+              setShowDetail={setShowDetail}
+            />
+          ) : (
+            <ContactDetail
+              setTableShow={setTableShow}
+              setShowDetail={setShowDetail}
+            />
+          )}
+        </div>
       </div>
-      {/* <ContactDetail/> */}
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
