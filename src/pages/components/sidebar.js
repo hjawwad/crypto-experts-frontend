@@ -10,7 +10,7 @@ import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import LogoutCard from "./svg-icons/logout-card";
 import CustomizedSwitches from "./svg-icons/darkMode";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const Sidebar = ({
   setSelectedGroup,
@@ -66,6 +66,7 @@ const Sidebar = ({
 
     setIsLoading(false);
   };
+
   useEffect(() => {
     async function fetchData() {
       await getAllGroupNames();
@@ -86,7 +87,7 @@ const Sidebar = ({
 
   return (
     <div
-      className="w-[250px] min-w-[250px] bg-[#1f1f1f] border border-[#303030]"
+      className={`"w-[250px] min-w-[250px] bg-[#1f1f1f] border ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}`}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -107,12 +108,12 @@ const Sidebar = ({
           </div>
           <div>Gabriele M.</div>
         </div>
-        <div className="mt-[10px] ml-[2px] " style={{ fontSize: "13.5px" }}>
+        {/* <div className="mt-[10px] ml-[2px] " style={{ fontSize: "13.5px" }}>
           <SearchBar />
-        </div>
+        </div> */}
         <div>
           <div
-            className="text-[#808080] ml-[30px]"
+            className="text-[#808080] ml-[30px] mt-5"
             style={{
               fontWeight: "500px",
               fontSize: "16px",

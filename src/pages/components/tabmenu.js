@@ -8,7 +8,7 @@ import ListInteractions from "./listInteractions";
 import CreateComment from "./createComment";
 import CreateInteractions from "./createInteractions";
 import { getAllComments, getAllInteractions } from "../api/register";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const TabButton = styled.button`
   position: relative;

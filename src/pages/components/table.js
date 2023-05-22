@@ -4,7 +4,7 @@ import CreateContact from "./createContact";
 import { useState, useEffect, useContext } from "react";
 import { getCompany } from "../api/register";
 import { useRouter } from "next/router";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 var moment = require("moment");
 
 const CompanyName = ({ companyId }) => {
@@ -146,37 +146,82 @@ const Table = ({
         buttonText="Create"
       />
       {data?.length ? (
-        <table className="table-fixed w-full border-collapse border">
+        <table
+          className="table-fixed w-full border-collapse border"
+          style={{ borderColor: "red" }}
+        >
           <thead>
             <tr>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}
+                `}
+              >
                 PEOPLE
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 EMAIL
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080] ${
+                  mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                }
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 DOB
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 CITY
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 COUNTRY
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 JOB
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 COMPANY
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 PHONE
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 TWITTER
               </th>
-              <th className="text-left p-[10px] pl-[40px] border border-[#303030] text-[#808080]">
+              <th
+                className={`text-left p-[10px] pl-[40px] border text-[#808080]
+                 ${mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"}
+                  ${mode.darkMode ? "text-[#303030]" : "text-[black]"}`}
+              >
                 LINKEDIN
               </th>
             </tr>
@@ -189,7 +234,9 @@ const Table = ({
                 onClick={() => handleOpenModal(item)}
               >
                 <td
-                  className="p-[10px] pl-[40px] border border-[#303030]"
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
                   style={{
                     ...(mode.darkMode == true
                       ? document.body.style.setProperty(
@@ -205,33 +252,67 @@ const Table = ({
                   {item.name ? item.name : ""}
                 </td>
                 <td
-                  className="p-[10px] pl-[40px] border border-[#303030] whitespace-nowrap overflow-hidden"
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  } whitespace-nowrap overflow-hidden`}
                   // style={borderColor}
                 >
                   {item.email ? item.email : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030] whitespace-nowrap overflow-hidden">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  } whitespace-nowrap overflow-hidden`}
+                >
                   {item.dob ? moment(item.dob).format("DD-MM-YYYY") : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.city ? item.city : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030] ">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  } `}
+                >
                   {item.country ? item.country : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.job ? item.job : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.company_name ? item.company_name : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.phone ? item.phone : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.twitter ? item.twitter : "-"}
                 </td>
-                <td className="p-[10px] pl-[40px] border border-[#303030]">
+                <td
+                  className={`p-[10px] pl-[40px] border ${
+                    mode.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+                  }`}
+                >
                   {item.linkedin ? item.linkedin : "-"}
                 </td>
               </tr>

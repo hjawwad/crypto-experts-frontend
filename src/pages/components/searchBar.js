@@ -1,7 +1,7 @@
 import { useRef, useContext } from "react";
 import CommandIcon from "./svg-icons/command-icon";
 import KIcon from "./svg-icons/k-icon";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const SearchBar = () => {
   const clickPoint = useRef();
