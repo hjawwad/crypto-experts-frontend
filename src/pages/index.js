@@ -23,7 +23,7 @@ export default function Home() {
 
   const handleLoginClick = async () => {
     await router.push("/dashboard");
-    // window.location.reload();
+    window.location.reload();
   };
 
   const handleFormSubmit = async (e) => {
