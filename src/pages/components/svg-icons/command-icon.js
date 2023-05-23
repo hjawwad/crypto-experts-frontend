@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import ThemeContext from "../utils";
+import ThemeContext from "../../../ThemeContext";
 
 function CommandIcon(props) {
   const mode = useContext(ThemeContext);
