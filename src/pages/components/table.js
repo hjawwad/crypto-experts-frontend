@@ -4,7 +4,7 @@ import CreateContact from "./createContact";
 import { useState, useEffect, useContext } from "react";
 import { getCompany, deleteGroupById } from "../api/register";
 import { useRouter } from "next/router";
-import ThemeContext from "./utils";
+import ThemeContext from "../../ThemeContext";
 import DropDownMenu from "./dropDownMenu";
 var moment = require("moment");
 

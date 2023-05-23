@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "react-tabs/style/react-tabs.css";
 import ListComments from "./listComments";
 import ListInteractions from "./listInteractions";
-import ThemeContext from "./utils";
+import ThemeContext from "../../ThemeContext";
 
 const TabButton = styled.button`
   position: relative;

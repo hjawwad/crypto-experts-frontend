@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { createComment, updateCommentById } from "../api/register";
 import showSuccessAlert from "./utility/showSuccessAlert";
 import showErrorAlert from "./utility/showErrorAlert";
-import ThemeContext from "./utils";
+import ThemeContext from "../../ThemeContext";
 
 ReactModal.setAppElement("#__next");
 
