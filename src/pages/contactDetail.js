@@ -23,7 +23,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonCircleIcon from "./components/svg-icons/person-icon";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import ThemeContext from "./utils";
+import ThemeContext from "./components/utils";
 
 var moment = require("moment");
 
@@ -161,7 +161,8 @@ function ContactDetail({ setTableShow, setShowDetail }) {
     setDropDown(!dropdown);
   };
 
-  const tagList = selectedRow?.tag?.split(" ") || [];
+  const tagList =
+    selectedRow?.tag === "" ? [] : selectedRow?.tag?.split(" ") || [];
 
   const handleAddOpenModal = () => setIsAddModal(true);
 
@@ -289,21 +290,31 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <div className="pb-[6px] text-[#6A6A6A] mr-5">
                                     <LocalOfferIcon />
                                   </div>
-
-                                  {tagList.map((tag, index) => (
-                                    <div
-                                      key={index}
-                                      className="text-xm border-slate-300 rounded-md ml-2"
-                                      style={{
-                                        backgroundColor: getRandomColor(),
-                                        display: "inline-block",
-                                        padding: "0 8px",
-                                        marginBottom: "5px",
-                                      }}
-                                    >
-                                      {tag}
-                                    </div>
-                                  ))}
+                                  {tagList.length > 0 ? (
+                                    tagList.map((tag, index) => (
+                                      <div
+                                        key={index}
+                                        className="text-xm border-slate-300 rounded-md ml-2"
+                                        style={{
+                                          backgroundColor: getRandomColor(),
+                                          display: "inline-block",
+                                          padding: "0 8px",
+                                          marginBottom: "5px",
+                                        }}
+                                      >
+                                        {tag}
+                                      </div>
+                                    ))
+                                  ) : (
+                                    <input
+                                      disabled="true"
+                                      type="text"
+                                      className="text-xm pl-2 border-slate-300 rounded-md"
+                                      style={rowStyle}
+                                      value={selectedRow?.tag}
+                                      placeholder="Tags"
+                                    />
+                                  )}
                                 </div>
                                 <div
                                   className="pb-[10px] mr-[5px]"

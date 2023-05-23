@@ -7,7 +7,7 @@ import showErrorAlert from "./components/utility/showErrorAlert";
 import LoginPageImage from "./components/svg-icons/login-page-image";
 import GmailIcon from "./components/svg-icons/gmail-icon";
 import CustomizedSwitches from "./components/svg-icons/darkMode";
-import ThemeContext from "./utils";
+import ThemeContext from "./components/utils";
 
 export default function Home() {
   const mode = useContext(ThemeContext);

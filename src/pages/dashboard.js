@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { getAllContactsByGroup, getAllGroups } from "./api/register";
 import Cookies from "js-cookie";
 import ContactDetail from "./contactDetail";
-import ThemeContext from "./utils";
+import ThemeContext from "./components/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 

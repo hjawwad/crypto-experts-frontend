@@ -10,7 +10,7 @@ import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import LogoutCard from "./svg-icons/logout-card";
 import CustomizedSwitches from "./svg-icons/darkMode";
-import ThemeContext from "../utils";
+import ThemeContext from "./utils";
 
 const Sidebar = ({
   setSelectedGroup,

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import ThemeContext from "@/pages/utils";
+import ThemeContext from "../utils";
 
 function KIcon(props) {
   const mode = useContext(ThemeContext);

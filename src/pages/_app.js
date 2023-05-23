@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import ThemeContext from "./utils";
+import ThemeContext from "./components/utils";
 import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {

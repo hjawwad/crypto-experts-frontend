@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { createGroup, updateGroupById } from "../api/register";
 import showErrorAlert from "./utility/showErrorAlert";
 import showSuccessAlert from "./utility/showSuccessAlert";
-import ThemeContext from "../utils";
+import ThemeContext from "./utils";
 
 ReactModal.setAppElement("#__next");
 
