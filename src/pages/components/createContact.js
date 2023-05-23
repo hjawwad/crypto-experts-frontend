@@ -16,7 +16,8 @@ import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import BusinessIcon from "@mui/icons-material/Business";
 import "react-datepicker/dist/react-datepicker.css";
 var moment = require("moment");
-import { ThemeContext } from "../dashboard";
+import DatePicker from "react-datepicker";
+import ThemeContext from "../utils";
 import Cross from "./../../../public/cross.svg";
 import Image from "next/image";
 
@@ -52,7 +53,7 @@ function CreateContact({
     content: {
       maxWidth: "495px",
       width: "700px",
-      backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
+      backgroundColor: mode?.darkMode ? mode?.color.dark : "white",
     },
     overlay: {},
   };
@@ -78,7 +79,7 @@ function CreateContact({
       setLinkedIn(selectedRow.linkedin || "");
       setCompany(selectedRow.company_name || "");
       setDOB(selectedRow.dob === "" ? "" : new Date(selectedRow.dob) || "");
-      setConnections(selectedRow.connections || []);
+      // setConnections(selectedRow.connections || []);
       // setCompanies(selectedRow.companies || [{ name: "", logo: null }]);
     }
   }, []);
@@ -159,7 +160,7 @@ function CreateContact({
         setUniversity("");
         setMeet("");
         setDOB("");
-        setConnections("");
+        // setConnections("");
       } else {
         responseContact = await updateContactByGroup(
           selectedRow?.group_id,
@@ -212,7 +213,15 @@ function CreateContact({
             : mode?.color.white,
         }}
       >
-        <h1 style={{ fontSize: "18px", fontWeight: "700" }}>Create persona</h1>
+        <h1
+          style={{
+            fontSize: "18px",
+            fontWeight: "700",
+            color: mode?.darkMode ? mode?.color.dark : "#ABABAB",
+          }}
+        >
+          Create persona
+        </h1>
         <div className="w-full p-[20px] pb-[5px]">
           <div className="items-center justify-center  pb-[22px]">
             <form onSubmit={handleFormSubmit} className="text-left pt-5">
@@ -222,12 +231,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <PersonIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="name"
                       onChange={(e) => setName(e.target.value)}
@@ -239,12 +248,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <AlternateEmailIcon />
                     </div>
                     <input
                       type="email"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5 "
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5 "
                       style={customBackground}
                       id="name"
                       onChange={(e) => setEmail(e.target.value)}
@@ -256,13 +265,13 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <LocalOfferIcon />
                     </div>
 
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="name"
                       onChange={(e) => setTag(e.target.value)}
@@ -274,12 +283,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <GroupsIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="name"
                       onChange={(e) => setMeet(e.target.value)}
@@ -291,10 +300,10 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <CakeIcon />
                     </div>
-                    {/* <DatePicker
+                    <DatePicker
                       dateFormat="dd-MM-yyyy"
                       selected={dob}
                       value={
@@ -303,20 +312,22 @@ function CreateContact({
                           : "Birthday"
                       }
                       onChange={(date) => handleBOD(date)}
-                      className="pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md  ml-5"
+                      className={`pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md  ml-5 ${
+                        mode?.darkMode ? "bg-[#1f1f1f]" : "bg-white"
+                      }`}
                       // useWeekdaysShort={true}
-                    /> */}
+                    />
                   </div>
                   <div
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <LocalPhoneIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="phone"
                       onChange={(e) => setPhone(e.target.value)}
@@ -328,12 +339,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <PlaceIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="city"
                       onChange={(e) => setCity(e.target.value)}
@@ -345,12 +356,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <PlaceIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="country"
                       onChange={(e) => setCountry(e.target.value)}
@@ -362,12 +373,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <LinkedInIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="linkedin"
                       onChange={(e) => setLinkedIn(e.target.value)}
@@ -379,12 +390,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <TwitterIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="twitter"
                       onChange={(e) => setTwitter(e.target.value)}
@@ -396,12 +407,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <WorkOutlineIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="job"
                       onChange={(e) => setJob(e.target.value)}
@@ -413,12 +424,12 @@ function CreateContact({
                     className="pb-[25px] mr-[5px]"
                     style={{ display: "flex" }}
                   >
-                    <div className="pb-[6px] text-[#6A6A6A]">
+                    <div className="pb-[6px] text-[#ABABAB]">
                       <BusinessIcon />
                     </div>
                     <input
                       type="text"
-                      className="text-xl pl-2 border-slate-300 rounded-md  ml-5"
+                      className="text-xm text-[#ABABAB] pl-2 border-slate-300 rounded-md  ml-5"
                       style={customBackground}
                       id="company"
                       onChange={(e) => setCompany(e.target.value)}
@@ -429,15 +440,21 @@ function CreateContact({
                   <div style={{ display: "flex", justifyContent: "end" }}>
                     <button
                       type="submit"
-                      className="text-xl border border-slate-300 rounded-md p-2  border-none"
-                      style={{ customBackground, backgroundColor: "#0353CC" }}
+                      className="text-xm text-[#fff] border border-slate-300 rounded-md p-2  border-none"
+                      style={{
+                        customBackground,
+                        backgroundColor: mode?.darkMode ? "" : "#008C5A",
+                      }}
                     >
                       {isLoading ? "Creating" : buttonText}
                     </button>
                     <button
                       onClick={onRequestClose}
-                      className="text-xl  border border-slate-300 rounded-md p-2 border-none"
-                      style={{ backgroundColor: "#43464C", marginLeft: "2vh" }}
+                      className="text-xm text-[#fff]  border border-slate-300 rounded-md p-2 border-none"
+                      style={{
+                        backgroundColor: mode?.darkMode ? "" : "#000",
+                        marginLeft: "2vh",
+                      }}
                     >
                       Cancel
                     </button>

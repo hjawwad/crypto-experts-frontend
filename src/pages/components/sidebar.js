@@ -10,7 +10,7 @@ import { destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import LogoutCard from "./svg-icons/logout-card";
 import CustomizedSwitches from "./svg-icons/darkMode";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const Sidebar = ({
   setSelectedGroup,
@@ -20,7 +20,6 @@ const Sidebar = ({
   setTitle,
   setTableShow,
   getAllGroupNames,
-  setShowDetail,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [addGroup, setAddGroup] = useState(false);
@@ -41,7 +40,6 @@ const Sidebar = ({
   const isSelected = (current) => {
     if (selectedGroup._id === current._id) {
       setTitle(selectedGroup?.name);
-      setShowDetail(false);
       if (!mode?.darkMode) {
         return "bg-[#FFFAF0] rounded";
       }
@@ -60,7 +58,9 @@ const Sidebar = ({
 
   return (
     <div
-      className="w-[250px] min-w-[250px] bg-[#1f1f1f] border border-[#303030]"
+      className={`"w-[250px] min-w-[250px] bg-[#1f1f1f] border ${
+        mode?.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
+      }`}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -81,10 +81,10 @@ const Sidebar = ({
           </div>
           <div>Gabriele M.</div>
         </div>
-        <div className="mt-[10px] ml-[2px] " style={{ fontSize: "13.5px" }}>
+        {/* <div className="mt-[10px] ml-[2px] " style={{ fontSize: "13.5px" }}>
           <SearchBar />
-        </div>
-        <div>
+        </div> */}
+        <div className="mt-5">
           <div
             className="text-[#808080] ml-[30px]"
             style={{
@@ -160,7 +160,7 @@ const Sidebar = ({
         >
           <CustomizedSwitches />
         </div>
-        <div className="ml-auto flex items-center pr-[15px] cursor-pointer">
+        <div className="ml-auto flex items-center pr-[15px] cursor-pointer mb-5">
           <span className="ml-2 text-gray-800 font-medium pr-[15px] text-white">
             <LogoutCard />
           </span>

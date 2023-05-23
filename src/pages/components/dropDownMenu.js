@@ -14,7 +14,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import showSuccessAlert from "./utility/showSuccessAlert";
 import showErrorAlert from "./utility/showErrorAlert";
 import CreateGroup from "./createGroup";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const DropDownMenu = ({
   handleDelete,

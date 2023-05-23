@@ -5,11 +5,10 @@ import styled from "styled-components";
 import "react-tabs/style/react-tabs.css";
 import ListComments from "./listComments";
 import ListInteractions from "./listInteractions";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const TabButton = styled.button`
   position: relative;
-  /* Other button styles... */
   color: ${(props) =>
     props.isConditionMet ? "#6a6a6a !important" : "#6a6a6a !important"};
   padding: 6px 12px;
@@ -47,7 +46,11 @@ function TabMenu() {
         <Tab isConditionMet={mode?.darkMode}>Interactions</Tab>
         <Tab isConditionMet={mode?.darkMode}>Reminders</Tab>
       </TabList>
-      <h1 className="border border-[#3A3A3A]"></h1>
+      <h1
+        className={`border ${
+          mode?.darkMode ? "border-[#3A3A3A]" : "border-[#E2E2E2]"
+        }`}
+      ></h1>
 
       <TabPanel>
         <ListComments />

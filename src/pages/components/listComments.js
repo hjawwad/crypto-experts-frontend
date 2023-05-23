@@ -6,7 +6,7 @@ import {
 } from "../api/register";
 import { useEffect, useState, useContext } from "react";
 import CreateComment from "./createComment";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const ListComments = ({ setChange }) => {
   const [selectedRow, setSelectedRow] = useState({});

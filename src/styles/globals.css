@@ -75,3 +75,51 @@ tr {
   font-size: 13px;
   overflow: hidden;
 }
+
+.login-style-heading {
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0em;
+  text-align: left;
+  /* color: #101828; */
+}
+
+.login-style-text {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  /* color: #475467; */
+}
+
+.gmail-button {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.forgot-password {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.sign-up {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  /* color: #0353cc; */
+}

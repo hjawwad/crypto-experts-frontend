@@ -1,20 +1,14 @@
 import ReactModal from "react-modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { createGroup, updateGroupById } from "../api/register";
 import showErrorAlert from "./utility/showErrorAlert";
 import showSuccessAlert from "./utility/showSuccessAlert";
+import ThemeContext from "../utils";
 
 ReactModal.setAppElement("#__next");
 
 function CreateGroup({ isOpen, onRequestClose, group }) {
-  const customStyles = {
-    content: {
-      maxWidth: "500px",
-      width: "500px",
-      minHeight: "500px",
-    },
-    overlay: {},
-  };
+  const mode = useContext(ThemeContext);
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +29,7 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!name) {
-      showErrorAlert("Group name and logo is required");
+      showErrorAlert("Group name is required");
       return;
     }
     setIsLoading(true);
@@ -72,6 +66,16 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
     }
   }, [group]);
 
+  const customStyles = {
+    content: {
+      maxWidth: "500px",
+      width: "500px",
+      height: "350px",
+      backgroundColor: mode?.darkMode ? "#1f1f1f" : "white",
+    },
+    overlay: {},
+  };
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -83,7 +87,9 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
         <div className="pb-[47px]">
           <input
             type="name"
-            className="w-full bg-black text-xl border border-slate-300 rounded-[16px] bg-black p-2 pl-5"
+            className={`w-full text-xl border border-slate-300 rounded-[16px] p-2 pl-5 ${
+              mode?.darkMode ? "bg-[#1f1f1f]" : ""
+            }`}
             id="name"
             placeholder="Name of the group"
             onChange={(e) => setName(e.target.value)}
@@ -94,19 +100,25 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
           <input
             type="file"
             onChange={handleFileInputChange}
-            className="w-full bg-black text-xl border border-slate-300 rounded-[16px] bg-black p-2 pl-5"
+            className={`w-full text-[#ABABABAB] text-xl border border-slate-300 rounded-[16px] p-2 pl-5 ${
+              mode?.darkMode ? "bg-[#1f1f1f]" : ""
+            }`}
             accept="image/*"
           />
         </div>
         <button
           onClick={onRequestClose}
-          className="w-1/3 fixed bottom-0 left-0 mb-8 ml-8 p-4 rounded-[8px] text-black bg-white rounded-[8px] border border-white"
+          className={`w-[120px] fixed bottom-0  mb-8 ml-8 p-4 rounded-[10px] border border-white ${
+            mode?.darkMode ? "text-white" : "bg-[#000] text-white"
+          }`}
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="w-1/3 fixed bottom-0 right-0 mb-8 mr-8 p-4 text-white"
+          className={`w-[120px] fixed bottom-0 rounded-[10px] right-0 mb-8 mr-8 p-4 border border-white ${
+            mode?.darkMode ? "text-white" : "bg-[#008C5A] text-white"
+          }`}
         >
           {isLoading ? "Saving" : "Save"}
         </button>

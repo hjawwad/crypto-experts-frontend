@@ -23,7 +23,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonCircleIcon from "./components/svg-icons/person-icon";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { ThemeContext } from "./dashboard";
+import ThemeContext from "./utils";
 
 var moment = require("moment");
 
@@ -160,9 +160,21 @@ function ContactDetail({ setTableShow, setShowDetail }) {
   const handleDropDown = () => {
     setDropDown(!dropdown);
   };
+
+  const tagList = selectedRow?.tag?.split(" ") || [];
+
   const handleAddOpenModal = () => setIsAddModal(true);
 
   const handleAddCloseModal = () => setIsAddModal(false);
+
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
 
   return (
     <div
@@ -206,12 +218,18 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                   Send Email
                 </button> */}
               </div>
-              <h1 className="border border-[#3A3A3A]"></h1>
+              <h1
+                className={`border ${
+                  mode?.darkMode ? "border-[#3A3A3A]" : "border-[#E2E2E2]"
+                }`}
+              ></h1>
 
               <div
                 className="grid grid-cols-2 divide-x w-full"
                 style={{
-                  borderRight: "2px solid #3A3A3A",
+                  borderRight: `2px solid ${
+                    mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
+                  }`,
                 }}
               >
                 <div className="items-center justify-center pt-[22px]">
@@ -256,7 +274,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   </div>
                                   <input
                                     disabled="true"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     id="name"
                                     value={selectedRow?.name}
@@ -268,16 +286,24 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   className="pb-[10px] mr-[5px]"
                                   style={{ display: "flex" }}
                                 >
-                                  <div className="pb-[6px] text-[#6A6A6A]">
+                                  <div className="pb-[6px] text-[#6A6A6A] mr-5">
                                     <LocalOfferIcon />
                                   </div>
-                                  <input
-                                    disabled="true"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
-                                    style={rowStyle}
-                                    value={selectedRow?.tag}
-                                    placeholder="Where did we meet?"
-                                  />
+
+                                  {tagList.map((tag, index) => (
+                                    <div
+                                      key={index}
+                                      className="text-xm border-slate-300 rounded-md ml-2"
+                                      style={{
+                                        backgroundColor: getRandomColor(),
+                                        display: "inline-block",
+                                        padding: "0 8px",
+                                        marginBottom: "5px",
+                                      }}
+                                    >
+                                      {tag}
+                                    </div>
+                                  ))}
                                 </div>
                                 <div
                                   className="pb-[10px] mr-[5px]"
@@ -289,7 +315,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.meet}
                                     placeholder="Where did we meet?"
@@ -311,7 +337,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                           )
                                         : ""
                                     }
-                                    className="pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md ml-5"
+                                    className="pb-[6px] pt-[5px] pl-2 text-xm text-[#ABABAB] border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     placeholder="Birthday"
                                   />
@@ -326,7 +352,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.phone}
                                     placeholder="Phone"
@@ -342,7 +368,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.city}
                                     placeholder="City"
@@ -358,7 +384,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.country}
                                     placeholder="Country"
@@ -374,7 +400,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.linkedin}
                                     placeholder="LinkedIn"
@@ -390,7 +416,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.twitter}
                                     placeholder="Twitter"
@@ -406,7 +432,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="email"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5 "
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5 "
                                     style={rowStyle}
                                     value={selectedRow?.email}
                                     placeholder="Email"
@@ -422,7 +448,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.job}
                                     placeholder="Job"
@@ -438,7 +464,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                                   <input
                                     disabled="true"
                                     type="text"
-                                    className="text-xl pl-2 border-slate-300 rounded-md ml-5"
+                                    className="text-xm pl-2 border-slate-300 rounded-md ml-5"
                                     style={rowStyle}
                                     value={selectedRow?.company}
                                     placeholder="Company"

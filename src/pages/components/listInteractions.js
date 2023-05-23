@@ -6,7 +6,7 @@ import {
 } from "../api/register";
 import { useContext, useEffect, useState } from "react";
 import CreateInteractions from "./createInteractions";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 const ListInteractions = ({ setChange }) => {
   const [selectedRow, setSelectedRow] = useState({});

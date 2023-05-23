@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Inter } from "next/font/google";
-import { createContext } from "react";
 import Table from "./components/table";
 import Sidebar from "./components/sidebar";
 import Image from "next/image";
@@ -9,12 +8,14 @@ import { useRouter } from "next/router";
 import { getAllContactsByGroup, getAllGroups } from "./api/register";
 import Cookies from "js-cookie";
 import ContactDetail from "./contactDetail";
+import ThemeContext from "./utils";
 
 const inter = Inter({ subsets: ["latin"] });
-export const ThemeContext = createContext();
 
 function Dashboard() {
   const router = useRouter();
+  const mode = useContext(ThemeContext);
+
   const [selectedGroup, setSelectedGroup] = useState("");
   const [contactData, setContactData] = useState("");
   const [added, setAdded] = useState(false);
@@ -25,9 +26,6 @@ function Dashboard() {
   const [successMessage, setSuccessMessage] = useState(null);
   const [tableShow, setTableShow] = useState(true);
   const token = Cookies.get("session_token");
-  const [showDetail, setShowDetail] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
-  const color = { white: "#FFFFFF", dark: "#1f1f1f" };
 
   const getAllContacts = async () => {
     setIsLoading(true);
@@ -78,10 +76,14 @@ function Dashboard() {
   }, [selectedGroup]);
 
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode, color }}>
+    <div>
       <div
         className="flex min-h-screen flex-row"
-        style={{ backgroundColor: darkMode ? color.dark : color.white }}
+        style={{
+          backgroundColor: mode?.darkMode
+            ? mode?.color.dark
+            : mode?.color.white,
+        }}
       >
         <Sidebar
           title="Click me"
@@ -92,13 +94,14 @@ function Dashboard() {
           getAllGroupNames={getAllGroupNames}
           setTitle={setTitle}
           setTableShow={setTableShow}
-          setShowDetail={setShowDetail}
         />
         <div
           className="w-full"
           style={{
-            backgroundColor: darkMode ? color.dark : color.white,
-            borderColor: darkMode ? "#303030 " : "#D0D5DD",
+            backgroundColor: mode?.darkMode
+              ? mode?.color.dark
+              : mode?.color.white,
+            borderColor: mode?.darkMode ? "#303030 " : "#D0D5DD",
           }}
         >
           <header className="flex items-center p-4 pl-[50px]">
@@ -115,7 +118,7 @@ function Dashboard() {
               <div
                 className="font-medium text-[24px]"
                 style={{
-                  color: darkMode ? "#FFFAF0" : "#3A3A3A",
+                  color: mode?.darkMode ? "#FFFAF0" : "#3A3A3A",
                 }}
               >
                 {title}
@@ -136,17 +139,13 @@ function Dashboard() {
               setAdded={setAdded}
               getAllGroupNames={getAllGroupNames}
               setTableShow={setTableShow}
-              setShowDetail={setShowDetail}
             />
           ) : (
-            <ContactDetail
-              setTableShow={setTableShow}
-              setShowDetail={setShowDetail}
-            />
+            <ContactDetail setTableShow={setTableShow} />
           )}
         </div>
       </div>
-    </ThemeContext.Provider>
+    </div>
   );
 }
 

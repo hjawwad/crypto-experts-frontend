@@ -1,7 +1,7 @@
 import ReactModal from "react-modal";
 import { useEffect, useState, useContext } from "react";
 import { createInteraction, updateInteractionById } from "../api/register";
-import { ThemeContext } from "../dashboard";
+import ThemeContext from "../utils";
 
 ReactModal.setAppElement("#__next");
 
