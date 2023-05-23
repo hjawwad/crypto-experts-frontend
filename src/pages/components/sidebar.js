@@ -58,7 +58,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`"w-[250px] min-w-[250px] bg-[#1f1f1f] border ${
+      className={`"w-[225px] min-w-[225px] bg-[#1f1f1f] border ${
         mode?.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
       }`}
       style={{
@@ -69,7 +69,7 @@ const Sidebar = ({
       }}
     >
       <div style={{ justifyContent: "flex-start" }}>
-        <div
+        {/* <div
           className="text-[20px] pl-2 pt-2 text-[#808080] ml-[22px] mt-[30px] cursor-pointer bg-[#292929] rounded-md border border-[#303030] w-[200px] h-[45px] "
           style={{
             display: "inline-flex",
@@ -80,7 +80,7 @@ const Sidebar = ({
             <ProfileIcon />
           </div>
           <div>Gabriele M.</div>
-        </div>
+        </div> */}
         {/* <div className="mt-[10px] ml-[2px] " style={{ fontSize: "13.5px" }}>
           <SearchBar />
         </div> */}
@@ -112,7 +112,7 @@ const Sidebar = ({
               <div className="pl-5">
                 {data?.map((item) => (
                   <div
-                    className={`p-[8px] w-[24vh] mb-[10px] cursor-pointer  ${isSelected(
+                    className={`p-[8px] w-[165px] mb-[10px] cursor-pointer  ${isSelected(
                       item.data
                     )}`}
                     key={item.data.name}

@@ -100,8 +100,8 @@ const Table = ({
 
   const handleHeadStyle = () => {
     return mode?.darkMode
-      ? "text-left p-[10px] border border-[#303030] text-[#808080]"
-      : "text-left p-[10px] border border-[#F2F2F2] text-[black]";
+      ? "text-left p-[10px] font-semibold text-bold border border-[#303030] text-[#808080]"
+      : "text-left p-[10px] font-semibold border border-[#F2F2F2] text-[black]";
   };
 
   const handleRowStyle = () => {
@@ -148,16 +148,16 @@ const Table = ({
           <table className="table-fixed w-full border-collapse border border-[#303030] ">
             <thead>
               <tr>
-                <th className={`${handleHeadStyle()}`}>PEOPLE</th>
-                <th className={`${handleHeadStyle()}`}>EMAIL</th>
+                <th className={`${handleHeadStyle()}`}>People</th>
+                <th className={`${handleHeadStyle()}`}>Email</th>
                 <th className={`${handleHeadStyle()}`}>DOB</th>
-                <th className={`${handleHeadStyle()}`}>CITY</th>
-                <th className={`${handleHeadStyle()}`}>COUNTRY</th>
-                <th className={`${handleHeadStyle()}`}>JOB</th>
-                <th className={`${handleHeadStyle()}`}>COMPANY</th>
-                <th className={`${handleHeadStyle()}`}>PHONE</th>
-                <th className={`${handleHeadStyle()}`}>TWITTER</th>
-                <th className={`${handleHeadStyle()}`}>LINKEDIN</th>
+                <th className={`${handleHeadStyle()}`}>City</th>
+                <th className={`${handleHeadStyle()}`}>Country</th>
+                <th className={`${handleHeadStyle()}`}>Job</th>
+                <th className={`${handleHeadStyle()}`}>Company</th>
+                <th className={`${handleHeadStyle()}`}>Phone</th>
+                <th className={`${handleHeadStyle()}`}>Twitter</th>
+                <th className={`${handleHeadStyle()}`}>Linkedin</th>
               </tr>
             </thead>
             <tbody>

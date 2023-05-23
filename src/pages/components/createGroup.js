@@ -70,7 +70,7 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
     content: {
       maxWidth: "500px",
       width: "500px",
-      height: "350px",
+      height: "200px",
       backgroundColor: mode?.darkMode ? "#1f1f1f" : "white",
     },
     overlay: {},
@@ -94,16 +94,6 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
             placeholder="Name of the group"
             onChange={(e) => setName(e.target.value)}
             value={name}
-          />
-        </div>
-        <div className="pb-[47px]">
-          <input
-            type="file"
-            onChange={handleFileInputChange}
-            className={`w-full text-[#ABABABAB] text-xl border border-slate-300 rounded-[16px] p-2 pl-5 ${
-              mode?.darkMode ? "bg-[#1f1f1f]" : ""
-            }`}
-            accept="image/*"
           />
         </div>
         <button

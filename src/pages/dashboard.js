@@ -104,8 +104,8 @@ function Dashboard() {
             borderColor: mode?.darkMode ? "#303030 " : "#D0D5DD",
           }}
         >
-          <header className="flex items-center p-4 pl-[50px]">
-            <div className="flex-shrink-0">
+          <header className="flex items-center p-4 ">
+            {/* <div className="flex-shrink-0">
               <Image
                 src="/home-icon.svg"
                 alt="Home Icon"
@@ -113,8 +113,8 @@ function Dashboard() {
                 height={30}
                 priority
               />
-            </div>
-            <nav className="ml-6 flex space-x-4">
+            </div> */}
+            <nav className="flex space-x-4">
               <div
                 className="font-medium text-[24px]"
                 style={{
