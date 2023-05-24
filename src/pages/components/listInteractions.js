@@ -66,16 +66,18 @@ const ListInteractions = ({ setChange }) => {
         interactions.map((item) => (
           <div
             key={item._id}
-            style={{ color: mode?.darkMode ? "#fff" : "#000" }}
-            className={`flex justify-between items-center m-3 border border-[${
-              mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
-            }] rounded-[8px]`}
+            style={{
+              color: mode?.darkMode ? "#fff" : "#000",
+              border: `1px solid ${mode?.darkMode ? "#3A3A3A" : "#E2E2E2"}`,
+            }}
+            className={`flex justify-between items-center m-3  rounded-[8px]`}
           >
             <div className="flex items-center m-2">
               <div
-                className={`mr-[19px] text-center rounded-[8px] border border-[${
-                  mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
-                }] pl-[20px] pr-[20px]`}
+                style={{
+                  border: `1px solid ${mode?.darkMode ? "#3A3A3A" : "#E2E2E2"}`,
+                }}
+                className={`mr-[19px] text-center rounded-[8px] pl-[20px] pr-[20px]`}
               >
                 <p className="text-[#F66363] text-[18px]">
                   {getInteractionMonth(item.date)}
