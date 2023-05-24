@@ -46,18 +46,28 @@ function TabMenu() {
         <Tab isConditionMet={mode?.darkMode}>Interactions</Tab>
         <Tab isConditionMet={mode?.darkMode}>Reminders</Tab>
       </TabList>
-      <h1
-        className={`border ${
-          mode?.darkMode ? "border-[#3A3A3A]" : "border-[#E2E2E2]"
-        }`}
-      ></h1>
 
-      <TabPanel>
+      <TabPanel
+        style={{
+          borderTop: `1px solid ${mode?.darkMode ? "#3A3A3A" : "#E2E2E2"}`,
+        }}
+      >
         <ListComments />
       </TabPanel>
 
-      <TabPanel>
+      <TabPanel
+        style={{
+          borderTop: `1px solid ${mode?.darkMode ? "#3A3A3A" : "#E2E2E2"}`,
+        }}
+      >
         <ListInteractions />
+      </TabPanel>
+      <TabPanel
+        style={{
+          borderTop: `1px solid ${mode?.darkMode ? "#3A3A3A" : "#E2E2E2"}`,
+        }}
+      >
+        <div>Reminders</div>
       </TabPanel>
     </Tabs>
   );

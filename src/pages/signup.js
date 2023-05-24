@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import register from "./api/register";
 import showSuccessAlert from "./components/utility/showSuccessAlert";
 import showErrorAlert from "./components/utility/showErrorAlert";
+import LoginPageImage from "./components/svg-icons/login-page-image";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Signup() {
@@ -63,7 +64,7 @@ export default function Signup() {
   };
   return (
     <div className="flex min-h-screen flex-col items-center text-center justify-between bg-white">
-      <div className="grid grid-cols-2 divide-x w-full">
+      <div className="grid grid-cols-2 divide-x w-full m-[4vh]">
         <div className=" border-none border-0 items-center justify-center mx-auto pt-[199px]">
           <h1 className="text-4xl text-left w-[360px] text-black">Sign up</h1>
           <p className="text-left pt-[12px] text-[#475467]">
@@ -138,15 +139,8 @@ export default function Signup() {
             </div>
           </form>
         </div>
-        <div className=" border-none border-0 pl-[48px]">
-          <Image
-            src="/signup-bg.svg"
-            alt="Sign Up Background"
-            className="w-full"
-            width={100}
-            height={100}
-            priority
-          />
+        <div className=" border-none border-0 pl-[96px]">
+          <LoginPageImage />
         </div>
       </div>
     </div>

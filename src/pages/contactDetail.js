@@ -219,16 +219,14 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                   Send Email
                 </button> */}
               </div>
-              <h1
-                className={`border ${
-                  mode?.darkMode ? "border-[#3A3A3A]" : "border-[#E2E2E2]"
-                }`}
-              ></h1>
 
               <div
                 className="grid grid-cols-2 divide-x w-full"
                 style={{
-                  borderRight: `2px solid ${
+                  borderTop: `1px solid ${
+                    mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
+                  }`,
+                  borderRight: `1px solid ${
                     mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
                   }`,
                 }}

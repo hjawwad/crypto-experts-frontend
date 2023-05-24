@@ -112,7 +112,7 @@ const Sidebar = ({
               <div className="pl-5">
                 {data?.map((item) => (
                   <div
-                    className={`p-[8px] w-[165px] mb-[10px] cursor-pointer  ${isSelected(
+                    className={`p-[8px] w-[165px] mb-[4px] cursor-pointer  ${isSelected(
                       item.data
                     )}`}
                     key={item.data.name}
@@ -124,7 +124,7 @@ const Sidebar = ({
                         setTableShow(true);
                       }}
                     >
-                      <div className="text-base text-[#808080]">
+                      <div className="text-base font-light text-[#808080]">
                         &nbsp; <span>{item.data.name}</span>
                       </div>
                       <div className="text-base text-right text-[#808080] flex-1">

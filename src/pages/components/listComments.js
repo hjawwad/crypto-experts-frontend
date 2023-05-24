@@ -66,7 +66,9 @@ const ListComments = ({ setChange }) => {
         data.map((item) => (
           <div
             key={item._id}
-            className="flex justify-between items-center border border-[#303030] rounded-[8px] m-3 p-[13px] pl-[46px] pr-[26px] mb-[20px]"
+            className={`flex justify-between items-center border border-[${
+              mode?.darkMode ? "#3A3A3A" : "#E2E2E2"
+            }] rounded-[8px] m-3 p-[13px] pl-[46px] pr-[26px] mb-[20px]`}
           >
             <div>
               <p style={{ color: mode?.darkMode ? "#505050" : "#000" }}>
