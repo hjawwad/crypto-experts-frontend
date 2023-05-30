@@ -312,7 +312,7 @@ function CreateContact({
                           : "Birthday"
                       }
                       onChange={(date) => handleBOD(date)}
-                      className={`pb-[6px] pt-[5px] pl-2 text-xl text-[#ABABAB] border-slate-300 rounded-md  ml-5 ${
+                      className={`pb-[6px] pt-[5px] pl-2 text-xm text-[#ABABAB] border-slate-300 rounded-md  ml-5 ${
                         mode?.darkMode ? "bg-[#1f1f1f]" : "bg-white"
                       }`}
                       // useWeekdaysShort={true}

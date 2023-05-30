@@ -196,7 +196,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                   padding: "20px",
                 }}
               >
-                <div className="flex w-full text-[#fffff] text-[28px] border-bottom">
+                <div className="flex w-full text-[#fffff] text-[21px] border-bottom">
                   <div>
                     {selectedRow?.image ? (
                       selectedRow.image
@@ -232,7 +232,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                 }}
               >
                 <div className="items-center justify-center pt-[22px]">
-                  <div className="flex text-[25px] ml-5">
+                  <div className="flex text-[21px] ml-5">
                     <div onClick={handleDropDown}>
                       {dropdown ? (
                         <KeyboardArrowDownIcon
