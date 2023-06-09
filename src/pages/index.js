@@ -1,16 +1,26 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { Poppins, Inter } from "next/font/google";
 import { login } from "./api/register";
 import { useContext, useState } from "react";
 import showErrorAlert from "./components/utility/showErrorAlert";
-import LoginPageImage from "./components/svg-icons/login-page-image";
-import GmailIcon from "./components/svg-icons/gmail-icon";
-import CustomizedSwitches from "./components/svg-icons/darkMode";
+import mindOS from "./components/svg-icons/mindOS";
+import EastIcon from "@mui/icons-material/East";
 import ThemeContext from "../ThemeContext";
+import Image from "next/image";
 
+const fontPoppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
+const fontInter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 export default function Home() {
   const mode = useContext(ThemeContext);
+
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,12 +73,560 @@ export default function Home() {
 
   return (
     <div
-      className="flex min-h-screen flex-col items-center text-center justify-between"
+      className={`flex justify-center min-h-screen`}
       style={{
         backgroundColor: mode?.darkMode ? mode?.color.dark : mode?.color.white,
+        fontFamily: "Poppins",
       }}
     >
-      <div className="grid grid-cols-2 divide-x w-full m-[4vh]">
+      <div className="w-[90%] flex flex-col">
+        <header className="container flex justify-between mt-[30px]">
+          <div className="flex">
+            <div className="m-[5px]">
+              <Image
+                src="/mindOS.svg"
+                alt="mindOS Icon"
+                width={95}
+                height={29}
+                priority
+              />
+            </div>
+
+            <div className="flex m-[5px] ml-[20px] border-l-[1px] border-[#343434]-500 text-[#ABABAB]">
+              <p className="ml-[20px] cursor-pointer">About Us</p>
+              <p className="ml-[20px] cursor-pointer">Contact Us</p>
+              <p className="ml-[20px] cursor-pointer">Futureproof</p>
+              <p className="ml-[20px] cursor-pointer">The Networking Academy</p>
+            </div>
+          </div>
+          <div className="border-[0.2px] border-[#fff]-500 p-2 rounded cursor-pointer">
+            Book Intro
+          </div>
+        </header>
+        <div className="text-center mt-10">
+          <div className="text-5xl text-center mx-[25%]">
+            Unleash the power of your relationships
+          </div>
+          <div className="mx-15% text-[#AEAEAE] text-ml mt-5">
+            A personal CRM and a community of people seeking to level up their
+            relationships and unleash incredible opportunities.
+          </div>
+          <div>
+            <button className="bg-[#043200] font-medium mt-5 p-3 px-10 rounded-[12px]">
+              JOIN OUR FREE BETA
+              <EastIcon className="ml-5" />
+            </button>
+            <div className="mt-2 font-medium text-[#AEAEAE] text-xs">
+              We facilitate connection to create opportunities
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center mt-20 ">
+          <div className="border border-[0.2px] border-[#A4A4A4] rounded-[24px] border-opacity-50 ">
+            <Image
+              src="/landingDash.svg"
+              alt="landingDash Icon"
+              width={960}
+              height={430}
+              priority
+            />
+          </div>
+        </div>
+
+        <div className="mt-20 text-center ">
+          <div className={`text-[#EAECF0] text-base ${fontInter.className}`}>
+            Trusted by leaders and founder at
+          </div>
+          <div className="flex justify-between mt-5">
+            {/* <div className="w-[40%] flex "> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={60}
+              priority
+            />
+            <Image
+              src="/lightbox.svg"
+              alt="lightbox Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div>
+            <div className="w-[40%] flex justify-between"> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            <Image
+              src="/lightbox.svg"
+              alt="lightbox Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div>
+            <div className="w-[20%]"> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div> */}
+          </div>
+        </div>
+        <hr className="mt-20" />
+
+        <div className="text-center mt-10">
+          <div className="text-5xl font-medium text-[#fff]">
+            Human relationships manager
+          </div>
+          <div className="text-[#AEAEAE] mt-10 mx-[30%]">
+            Helping you forge stronger, healthier and longer relationships with
+            the people you care about.
+          </div>
+        </div>
+
+        <div className="bg-[#000000] flex justify-between mt-20 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+          <div className="w-[45%] flex flex-col justify-center mt-[6vh] pl-[10vh]">
+            <div className={`font-normal text-3xl text-gradient`}>
+              Query your own network for insights
+            </div>
+            <div
+              className={`font-normal text-[#AEAEAE] mt-[6vh] mr-[10vh] ${fontInter.className}`}
+            >
+              AI-powered searching tool to nurture more personal and purposeful
+              relationships.
+            </div>
+          </div>
+          <div className="w-[55%] mt-[6vh]">
+            <Image
+              src="/friends.svg"
+              alt="friends Icon"
+              style={{ zIndex: 1, position: "relative" }}
+              width={785}
+              height={350}
+              priority
+            />
+            <div
+              className="landing-main-gradient-angles h-[100px] mt-[-100px]"
+              style={{ zIndex: 100, position: "relative" }}
+            />
+          </div>
+        </div>
+        <div className="flex justify-between mt-20">
+          <div className="bg-[#000] w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+            <div className="ml-[10vh] mt-[10vh] ">
+              <div className="ml-[8vh]">
+                <div className="mt-10 text-3xl text-gradient">
+                  Notify opportunities
+                </div>
+                <div className="mt-5 font-normal text-[#AEAEAE] mr-[5vh]">
+                  Share an invite with a google meet, a dinner out or a proposal
+                  to join your startup.
+                </div>
+              </div>
+              <Image
+                className="mt-[20vh]"
+                src="/landingNotification.svg"
+                alt="friends Icon"
+                width={500}
+                height={400}
+                priority
+              />
+            </div>
+          </div>
+          <div className="bg-[#000] w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+            <div className="ml-[20vh] mt-[10vh]">
+              <div className="mt-10 text-3xl text-gradient">
+                Remember details that matter
+              </div>
+              <div className="mt-5 text-[#AEAEAE] mr-5">
+                Clip any text to provide context for what you ask Gems.
+              </div>
+            </div>
+            <Image
+              className="mt-[5vh]"
+              src="/landingReminder.svg"
+              alt="friends Icon"
+              width={500}
+              height={400}
+              priority
+            />
+          </div>
+        </div>
+        <div className="flex justify-between mt-10">
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/user-tag.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Search</span> Looking to check who
+              is more fit to be an angel in your first round? Or that developer
+              you once saw on linkedin building an AI tool? We got you.
+            </div>
+          </div>
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/like.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Connect</span> All our users will
+              have the opportunity to connect but not chat. A connection means
+              that you can send notification for a dinner or whatever you might
+              want to en entire group or individually.
+            </div>
+          </div>
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/people.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Remember</span> Personal or
+              professional relationship alike details are the one who make you
+              stand out. Always jot down what you talked about in a meeting and
+              be ready to surprise.
+            </div>
+          </div>
+        </div>
+        <div className={`flex justify-between mt-20 ${fontInter.className}`}>
+          <div className="text-[#868686]">
+            <Image
+              src="/Oliver.svg"
+              alt="Oliver Tonucci"
+              width={400}
+              height={30}
+              priority
+            />
+            <div className="mt-[2rem]">Oliver Tonucci</div>
+            <div style={{ fontSize: "11px" }}>PWC</div>
+          </div>
+          <div className="text-[#868686]">
+            <Image
+              src="/Bruna.svg"
+              alt="Bruna Cabus"
+              width={400}
+              height={30}
+              priority
+            />
+            <div className="mt-[2rem]">Bruna Cabus</div>
+            <div style={{ fontSize: "11px" }}>21shares</div>
+          </div>
+          <div className="text-[#868686]">
+            <Image
+              src="/Darlene.svg"
+              alt="Darlene Robertson"
+              width={400}
+              height={30}
+              priority
+            />
+            <div className="mt-[2rem]">Darlene Robertson</div>
+            <div style={{ fontSize: "11px" }}>HV Capital</div>
+          </div>
+        </div>
+
+        <div className="text-center mt-20">
+          <div className="text-[#fff] text-5xl mx-[20%] font-medium">
+            Smarter relationships.
+            <br /> Better opportunities.
+          </div>
+          <div className="text-[#AEAEAE] text-lg mx-[35%] mt-5 font-medium">
+            Your network is your net-worth, it’s time to do something about it.
+          </div>
+        </div>
+
+        <div className="flex bg-[#000] mt-20 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+          <div className="w-[50%] flex flex-col justify-center ml-[10%]">
+            <div className="text-3xl">Connect and integrate your apps</div>
+            <div className="mt-5 text-[#AEAEAE]">
+              Stop the overload of information when <br /> looking for a
+              contact. Centralize them all.
+            </div>
+          </div>
+          <div className="w-[40%] mt-10 ">
+            <Image
+              className="rounded-b-[24px]"
+              src="/social.svg"
+              alt="Social Icons"
+              width={550}
+              height={30}
+              priority
+            />
+            <div
+              className="landing-main-gradient-angles rounded-[24px] h-[100px] mt-[-100px]"
+              style={{ zIndex: 100, position: "relative" }}
+            />
+          </div>
+        </div>
+        <div className="flex justify-between mt-[5vh] ">
+          <div className="bg-[#000] w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+            <div className="ml-[10vh] mt-[10vh]">
+              <div className="ml-[8vh]">
+                <div className="mt-10 text-3xl text-gradient">
+                  Set reminders, be present
+                </div>
+                <div className="mt-5 font-normal text-[#AEAEAE] mr-[5vh]">
+                  After a call, a meeting or a simple coffee, remember to set a
+                  reminder and not let years pass from another one
+                </div>
+              </div>
+              <Image
+                className="mt-[10vh]"
+                src="/setReminders.svg"
+                alt="friends Icon"
+                width={500}
+                height={400}
+                priority
+              />
+            </div>
+          </div>
+          <div className="bg-[#000] w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
+            <div className="ml-[10vh] mt-[10vh]">
+              <div className="ml-[8vh]">
+                <div className="mt-10 text-3xl text-gradient">
+                  Take action on your reminders
+                </div>
+                <div className="mt-5 font-normal text-[#AEAEAE] mr-[5vh]">
+                  Once the reminder is set we will notify you. We will also
+                  suggest other reminders based on where you left off.
+                </div>
+              </div>
+              <Image
+                className="mt-[10vh]"
+                src="/takeActions.svg"
+                alt="friends Icon"
+                width={500}
+                height={400}
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between mt-10 ">
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/connect.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Connect</span> Naturally, all your
+              contacts are scattered around several applications. With mindOS
+              you will able to easily connect them to import and enrich your
+              database.
+            </div>
+          </div>
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/status-up.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Reminders</span> In business, a deal
+              is usually won in a follow up. In relationships, the real bond is
+              similarly build.
+            </div>
+          </div>
+          <div className="flex p-5">
+            <div>
+              <Image
+                src="/task-square.svg"
+                alt="friends Icon"
+                width={100}
+                height={30}
+                priority
+              />
+            </div>
+            <div className="ml-4 text-[#AEAEAE] font-normal">
+              <span className="text-[#fff]">Action</span> Once notified, don’t
+              forget to take action. Use our notifications to invite your
+              contacts to a google meet or a dinner out.
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center text-[#fff] text-5xl mx-[20%] font-medium mt-[15vh]">
+          People are the centre of what we do
+        </div>
+
+        <div className="flex justify-between mt-20">
+          <div className="text-[#868686]">
+            <Image
+              src="/Oliver.svg"
+              alt="Oliver Tonucci"
+              width={400}
+              height={30}
+              priority
+            />
+            <div>Oliver Tonucci</div>
+            <div>PWC</div>
+          </div>
+          <div className="text-[#868686]">
+            <Image
+              src="/Bruna.svg"
+              alt="Bruna Cabus"
+              width={400}
+              height={30}
+              priority
+            />
+            <div>Bruna Cabus</div>
+            <div>21shares</div>
+          </div>
+          <div className="text-[#868686]">
+            <Image
+              src="/Darlene.svg"
+              alt="Darlene Robertson"
+              width={400}
+              height={30}
+              priority
+            />
+            <div>Darlene Robertson</div>
+            <div>HV Capital</div>
+          </div>
+        </div>
+
+        <div className="text-center mt-[15vh]">
+          <div className="text-5xl mx-[20%] font-medium">
+            A community to build <br /> meaningful connections
+          </div>
+          <div className="text-[#AEAEAE] text-lg mx-[30%] mt-[5vh] font-medium">
+            Join a community of people seeking to expand their network with
+            high-growth leaders in different industries. Be it VC, food lovers,
+            uni students or tech founders.
+          </div>
+        </div>
+        <div className="bg-[#000] flex mt-[15vh] border-[1px] border-[#A4A4A4] border-opacity-50 rounded-[24px] h-[488px] justify-center ">
+          <div className="flex w-1/2  justify-center align-center ">
+            <div
+              className="flex flex-col w-[400px] justify-center align-center "
+              style={{ margin: "0 auto" }}
+            >
+              <div className="text-[30px] text-[#FFFFFF] mb-5 mt-5">
+                Get instant 1:1s with community members
+              </div>
+              <div className="text-[19px] text-[#AEAEAE]">
+                {`Once in the community, we will also arrange weekly 1:1s with
+              members we believe you’ll like. With yhe public directory however,
+              you can also do so yoursefl:)`}
+              </div>
+            </div>
+          </div>
+          <div className="w-1/3 mt-[70px]">
+            <Image
+              src="/anala.svg"
+              alt="Oliver Tonucci"
+              width={337}
+              height={30}
+              priority
+            />
+          </div>
+          <div className="flex flex-col w-1/4 justify-center align-center mt-[180px]">
+            <Image
+              src="/gabi.svg"
+              alt="Oliver Tonucci"
+              width={329}
+              height={30}
+              priority
+            />
+          </div>
+        </div>
+        <div
+          className="landing-main-gradient-angles rounded-[24px] h-[130px] mt-[-130px]"
+          style={{ zIndex: 100, position: "relative" }}
+        />
+
+        <div className="flex justify-between mt-10">
+          <div className="bg-[#000] w-[47%] border border-[1px] border-[#AEAEAE] border-opacity-50 rounded-[24px] flex flex-col justify-center items-center">
+            <div className="m-20">
+              <div className="text-3xl font-normal">
+                Create a public profile and share it
+              </div>
+              <div>
+                When you sign up to mindOS, take the opportunity to create a
+                public profile.
+              </div>
+            </div>
+            <Image
+              src="/gabiDash.svg"
+              alt="Social Icons"
+              width={400}
+              height={30}
+              priority
+            />
+          </div>
+          <div className="bg-[#000] w-[47%] border border-[1px] border-[#AEAEAE] border-opacity-50 rounded-[24px] flex flex-col justify-center items-center">
+            <div className="m-20">
+              <div className="text-4xl font-normal">
+                Be part of a high-growth community
+              </div>
+              <div>
+                Your profile will then be shared under your chosen category and
+                people will have access to it.
+              </div>
+            </div>
+            <Image
+              src="/memberDir.svg"
+              alt="Social Icons"
+              width={400}
+              height={30}
+              priority
+            />
+          </div>
+        </div>
+        <div className="lineargradient2  mt-20 " />
+        <div className="flex justify-between py-5 mb-20">
+          <div>
+            <Image
+              src="/AVENUE.svg"
+              alt="Social Icons"
+              width={100}
+              height={30}
+              priority
+            />
+          </div>
+          <div className="flex ml-[20px] text-[#ABABAB]">
+            <p className="ml-[20px] cursor-pointer">Platform</p>
+            <p className="ml-[20px] cursor-pointer">Solution</p>
+            <p className="ml-[20px] cursor-pointer">About us</p>
+            <p className="ml-[20px] cursor-pointer">Pricing</p>
+            <p className="ml-[20px] cursor-pointer">Contact us</p>
+          </div>
+        </div>
+        {/* <div className="grid grid-cols-2 divide-x w-full m-[4vh]">
         <div className=" border-none border-0 items-center justify-center mx-auto mt-[15vh]">
           <div
             className="mb-5  text-[#808080]"
@@ -191,6 +749,7 @@ export default function Home() {
         <div className=" border-none border-0 pl-[96px]">
           <LoginPageImage />
         </div>
+      </div> */}
       </div>
     </div>
   );
