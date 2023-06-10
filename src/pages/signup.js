@@ -16,7 +16,7 @@ export default function Signup() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoginClick = () => {
-    router.push("/");
+    router.push("/signin");
   };
 
   const handleFormSubmit = async (e) => {

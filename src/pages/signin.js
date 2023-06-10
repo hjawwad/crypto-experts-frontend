@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import showSuccessAlert from "./components/utility/showSuccessAlert";
 import showErrorAlert from "./components/utility/showErrorAlert";
 import LoginPageImage from "./components/svg-icons/login-page-image";
 import GmailIcon from "./components/svg-icons/gmail-icon";
+import ThemeContext from "@/ThemeContext";
 import CustomizedSwitches from "./components/svg-icons/darkMode";
 const inter = Inter({ subsets: ["latin"] });
 
