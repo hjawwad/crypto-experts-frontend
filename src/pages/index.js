@@ -136,7 +136,7 @@ export default function Home() {
               />
             </div>
 
-            <div className="flex m-[5px] ml-[20px] border-l-[1px] border-[#343434]-500 text-[#ABABAB]  hidden sm:bloack">
+            <div className="hidden sm:inline-flex flex m-[5px] ml-[20px] border-l-[1px] border-[#343434]-500 text-[#ABABAB] ">
               <p className="ml-[20px] cursor-pointer">About Us</p>
               <p className="ml-[20px] cursor-pointer">Contact Us</p>
               <p className="ml-[20px] cursor-pointer">Futureproof</p>
