@@ -187,47 +187,47 @@ export default function Home() {
             Trusted by leaders and founder at
           </div>
           <div className="flex justify-between mt-5">
-            <div className="w-[40%] flex ">
-              <Image
-                src="/boltshift.svg"
-                alt="boltshift Icon"
-                width={180}
-                height={60}
-                priority
-              />
-              <Image
-                src="/lightbox.svg"
-                alt="lightbox Icon"
-                width={180}
-                height={100}
-                priority
-              />
-            </div>
-            <div className="w-[40%] flex justify-between">
-              <Image
-                src="/boltshift.svg"
-                alt="boltshift Icon"
-                width={180}
-                height={100}
-                priority
-              />
-              <Image
-                src="/lightbox.svg"
-                alt="lightbox Icon"
-                width={180}
-                height={100}
-                priority
-              />
-            </div>
-            <div className="w-[20%]">
-              <Image
-                src="/boltshift.svg"
-                alt="boltshift Icon"
-                width={180}
-                height={100}
-                priority
-              />
-            </div>
+            {/*  <div className="w-[40%] flex "> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={60}
+              priority
+            />
+            <Image
+              src="/lightbox.svg"
+              alt="lightbox Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div>
+            <div className="w-[40%] flex justify-between"> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            <Image
+              src="/lightbox.svg"
+              alt="lightbox Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div>
+            <div className="w-[20%]"> */}
+            <Image
+              src="/boltshift.svg"
+              alt="boltshift Icon"
+              width={180}
+              height={100}
+              priority
+            />
+            {/* </div> */}
           </div>
         </div>
         <hr className="mt-20" />
@@ -368,20 +368,18 @@ export default function Home() {
         >
           <div className="text-[#868686]">
             <Image
-              src="/Oliver.svg"
+              src="/oliver.svg"
               alt="Oliver Tonucci"
               width={400}
               height={30}
               priority
             />
-            <div className="mt-[2rem] ml-[2vh]">Oliver Tonucci</div>
-            <div className="ml-[2vh]" style={{ fontSize: "11px" }}>
-              PWC
-            </div>
+            <div className="mt-[2rem]">Oliver Tonucci</div>
+            <div style={{ fontSize: "11px" }}>PWC</div>
           </div>
           <div className="text-[#868686] hidden sm:block">
             <Image
-              src="/Bruna.svg"
+              src="/bruna.svg"
               alt="Bruna Cabus"
               width={400}
               height={30}
@@ -593,36 +591,36 @@ export default function Home() {
         <div className="flex text-[#868686] justify-center sm:justify-between mt-20">
           <div className="">
             <Image
-              src="/Oliver.svg"
+              src="/pwc.svg"
               alt="Oliver Tonucci"
               width={400}
               height={30}
               priority
             />
-            <div>Oliver Tonucci</div>
-            <div>PWC</div>
+            <div className="mt-[2rem]">Oliver Tonucci</div>
+            <div style={{ fontSize: "11px" }}>PWC</div>
           </div>
           <div className="hidden sm:block">
             <Image
-              src="/Bruna.svg"
+              src="/shares.svg"
               alt="Bruna Cabus"
               width={400}
               height={30}
               priority
             />
-            <div>Bruna Cabus</div>
-            <div>21shares</div>
+            <div className="mt-[2rem]">Bruna Cabus</div>
+            <div style={{ fontSize: "11px" }}>21shares</div>
           </div>
           <div className="hidden sm:block">
             <Image
-              src="/Darlene.svg"
+              src="/capital.svg"
               alt="Darlene Robertson"
               width={400}
               height={30}
               priority
             />
-            <div>Darlene Robertson</div>
-            <div>HV Capital</div>
+            <div className="mt-[2rem]">Darlene Robertson</div>
+            <div style={{ fontSize: "11px" }}>HV Capital</div>
           </div>
         </div>
 
