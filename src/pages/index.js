@@ -1,18 +1,9 @@
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
-import { Poppins, Inter } from "next/font/google";
-import { login } from "./api/register";
+import { Inter } from "next/font/google";
 import { useContext, useState } from "react";
-import showErrorAlert from "./components/utility/showErrorAlert";
-import mindOS from "./components/svg-icons/mindOS";
 import EastIcon from "@mui/icons-material/East";
 import ThemeContext from "../ThemeContext";
 import Image from "next/image";
-
-const fontPoppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-});
 
 const fontInter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -453,7 +444,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row justify-between mt-[5vh] ">
           <div className="bg-[#000] w-full sm:w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
             <div className="ml-3 sm:ml-[10vh] mt-[10vh]">
-              <div className="ml-0 sm:ml-[8vh]">
+              <div className="ml-0 sm:ml-[8vh] mr-3 sm:mr-[10vh]">
                 <div className="mt-10 text-3xl text-gradient">
                   Set reminders, be present
                 </div>
@@ -474,7 +465,7 @@ export default function Home() {
           </div>
           <div className="bg-[#000] w-full sm:w-[47%] mt-5 sm:mt-0 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
             <div className="ml-3 sm:ml-[10vh] mt-[10vh]">
-              <div className="ml-0 sm:ml-[8vh]">
+              <div className="ml-0 sm:ml-[8vh] mr-3 sm:mr-[10vh]">
                 <div className="mt-10 text-3xl text-gradient">
                   Take action on your reminders
                 </div>
