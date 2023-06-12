@@ -27,10 +27,6 @@ export default function Home() {
   };
 
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSigninClick = () => {
     router.push("/signin");
@@ -39,41 +35,6 @@ export default function Home() {
   const handleLoginClick = async () => {
     await router.push("/dashboard");
     window.location.reload();
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!email && !password) {
-      showErrorAlert("Email and  Password is required.");
-      return;
-    } else if (!email) {
-      showErrorAlert("Email is required.");
-      return;
-    } else if (!password) {
-      showErrorAlert("Password is required.");
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const response = await login(email, password, remember);
-      setIsLoading(false);
-
-      if (!response.status) {
-        showErrorAlert("Password is required.");
-        return;
-      }
-      Cookies.set("session_token", response.data.token, {
-        expires: response.data.expiresAt, // Set the cookie expiration time
-        secure: false, // Set to true if using HTTPS
-      });
-      handleLoginClick();
-    } catch (error) {
-      setIsLoading(false);
-      showErrorAlert(error);
-      return;
-    }
   };
 
   return (
@@ -243,7 +204,7 @@ export default function Home() {
         </div>
 
         <div className="bg-[#000000] flex flex-col sm:flex-row justify-between mt-20 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
-          <div className="w-full sm:w-[45%] flex flex-col justify-center mt-[6vh] pl-[10vh]">
+          <div className="w-full sm:w-[45%] flex flex-col justify-center mt-[6vh] pl-[5vh] sm:pl-[10vh]">
             <div className={`font-normal text-3xl text-gradient`}>
               Query your own network for insights
             </div>
@@ -584,7 +545,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="text-center text-[#fff] text-5xl mx-[5%] sm:mx-[20%] font-medium mt-[15vh]">
+        <div className="text-center text-[#fff] text-3xl sm:text-5xl mx-[5%] sm:mx-[20%] font-medium mt-[10vh] sm:mt-[15vh]">
           People are the centre of what we do
         </div>
 
@@ -625,7 +586,7 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-[15vh]">
-          <div className="text-5xl mx-[5%] sm:mx-[20%] font-medium">
+          <div className="text-3xl sm:text-5xl mx-[5%] sm:mx-[20%] font-medium">
             A community to build <br className="hidden sm:block" /> meaningful
             connections
           </div>
@@ -691,10 +652,10 @@ export default function Home() {
               </div>
             </div>
             <Image
-              className="rounded-[24px] mt-10 sm:mt-0"
+              className="rounded-b-[24px] mt-10 sm:mt-0"
               src="/gabiDash.svg"
               alt="Social Icons"
-              width={400}
+              width={570}
               height={30}
               priority
             />
@@ -710,10 +671,10 @@ export default function Home() {
               </div>
             </div>
             <Image
-              className="rounded-[24px] mt-10 sm:mt-0"
+              className="rounded-b-[24px] mt-10 sm:mt-0"
               src="/memberDir.svg"
               alt="Social Icons"
-              width={400}
+              width={570}
               height={30}
               priority
             />
