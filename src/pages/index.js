@@ -356,7 +356,7 @@ export default function Home() {
         </div> */}
 
         <div className="text-center mt-20">
-          <div className="text-[#fff] text-3xl sm:text-5xl mx-0 sm:mx-[20%] font-medium">
+          <div className="text-[#fff] text-2xl sm:text-5xl mx-0 sm:mx-[20%] font-medium">
             Smarter relationships.
             <br /> Better opportunities.
           </div>
@@ -367,10 +367,10 @@ export default function Home() {
 
         <div className="flex flex-col sm:flex-row bg-[#000] mt-20 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
           <div className="w-full sm:w-[50%] mt-5 sm:mt-0 flex flex-col justify-center ml-3 sm:ml-[10%]">
-            <div className="text-2xl sm:text-3xl">
+            <div className="text-2xl sm:text-3xl mx-3 sm:mx-0 my-2 sm:my-0">
               Connect and integrate your apps
             </div>
-            <div className="mt-5 text-[#AEAEAE]">
+            <div className="mt-5 text-[#AEAEAE] ml-3 sm:ml-0 mr-5 sm:mr-0">
               Stop the overload of information when{" "}
               <br className="hidden sm:block" /> looking for a contact.
               Centralize them all.
@@ -491,7 +491,7 @@ export default function Home() {
           People are the centre of what we do
         </div>
 
-        <div className="flex text-[#868686] justify-center sm:justify-between mt-20">
+        {/* <div className="flex text-[#868686] justify-center sm:justify-between mt-20">
           <div className="">
             <Image
               src="/pwc.svg"
@@ -525,7 +525,7 @@ export default function Home() {
             <div className="mt-[2rem]">Darlene Robertson</div>
             <div style={{ fontSize: "11px" }}>HV Capital</div>
           </div>
-        </div>
+        </div> */}
 
         <div className="text-center mt-[15vh]">
           <div className="text-3xl sm:text-5xl mx-[5%] sm:mx-[20%] font-medium">
@@ -604,7 +604,7 @@ export default function Home() {
           </div>
           <div className="bg-[#000] full-width sm:w-[47%] mt-5 sm:mt-0 border border-[1px] border-[#AEAEAE] border-opacity-50 rounded-[24px] flex flex-col justify-center items-center">
             <div className="m-3 sm:m-20">
-              <div className="text-3xl sm:text-[45px] leading-10 text-gradient text-[#fff] my-5">
+              <div className="text-3xl sm:text-[45px] leading-[50px] text-gradient text-[#fff] my-5">
                 Be part of a high-growth community
               </div>
               <div className="mt-3 text-[#868686]">
