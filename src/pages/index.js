@@ -266,7 +266,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
-          <div className="flex p-5">
+          <div className="flex p-5 w-1/3">
             {/* <div>
               <Image
                 src="/user-tag.svg"
@@ -282,7 +282,7 @@ export default function Home() {
               you once saw on linkedin building an AI tool? We got you.
             </div>
           </div>
-          <div className="flex p-5">
+          <div className="flex p-5 w-1/3">
             {/* <div>
               <Image
                 src="/like.svg"
@@ -299,7 +299,7 @@ export default function Home() {
               want to en entire group or individually.
             </div>
           </div>
-          <div className="flex p-5">
+          <div className="flex p-5 w-1/3">
             {/* <div>
               <Image
                 src="/people.svg"
@@ -391,58 +391,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between mt-10">
-          <div className="flex p-5">
-            {/* <div>
-              <Image
-                src="/user-tag.svg"
-                alt="friends Icon"
-                width={100}
-                height={30}
-                priority
-              />
-            </div> */}
-            <div className="ml-4 text-[#AEAEAE] font-normal">
-              <span className="text-[#fff]">Search</span> Looking to check who
-              is more fit to be an angel in your first round? Or that developer
-              you once saw on linkedin building an AI tool? We got you.
-            </div>
-          </div>
-          <div className="flex p-5">
-            {/* <div>
-              <Image
-                src="/like.svg"
-                alt="friends Icon"
-                width={100}
-                height={30}
-                priority
-              />
-            </div> */}
-            <div className="ml-4 text-[#AEAEAE] font-normal">
-              <span className="text-[#fff]">Connect</span> All our users will
-              have the opportunity to connect but not chat. A connection means
-              that you can send notification for a dinner or whatever you might
-              want to en entire group or individually.
-            </div>
-          </div>
-          <div className="flex p-5">
-            {/* <div>
-              <Image
-                src="/people.svg"
-                alt="friends Icon"
-                width={100}
-                height={30}
-                priority
-              />
-            </div> */}
-            <div className="ml-4 text-[#AEAEAE] font-normal">
-              <span className="text-[#fff]">Remember</span> Personal or
-              professional relationship alike details are the one who make you
-              stand out. Always jot down what you talked about in a meeting and
-              be ready to surprise.
-            </div>
-          </div>
-        </div>
+
         <div className="flex flex-col sm:flex-row justify-between mt-[5vh] ">
           <div className="bg-[#000] w-full sm:w-[47%] rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
             <div className="ml-3 sm:ml-[10vh] mt-[10vh]">
@@ -488,8 +437,8 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
-          <div className="flex p-5">
-            <div>
+          <div className="flex p-5 w-1/3">
+            {/* <div>
               <Image
                 src="/connect.svg"
                 alt="connect Icon"
@@ -497,7 +446,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Remember</span> Naturally, all your
               contacts are scattered around several applications. With mindOS
@@ -505,8 +454,8 @@ export default function Home() {
               database.
             </div>
           </div>
-          <div className="flex p-5">
-            <div>
+          <div className="flex p-5 w-1/3">
+            {/* <div>
               <Image
                 src="/status-up.svg"
                 alt="friends Icon"
@@ -514,15 +463,15 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Reminders</span> In business, a deal
               is usually won in a follow up. In relationships, the real bond is
               similarly build.
             </div>
           </div>
-          <div className="flex p-5">
-            <div>
+          <div className="flex p-5 w-1/3">
+            {/* <div>
               <Image
                 src="/task-square.svg"
                 alt="friends Icon"
@@ -530,7 +479,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Action</span> Once notified, don’t
               forget to take action. Use our notifications to invite your
