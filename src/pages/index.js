@@ -89,10 +89,12 @@ export default function Home() {
             </div>
 
             <div className="hidden sm:inline-flex flex m-[5px] ml-[20px] border-l-[1px] border-[#343434]-500 text-[#ABABAB] ">
-              <p className="ml-[20px] cursor-pointer">About Us</p>
-              <p className="ml-[20px] cursor-pointer">Contact Us</p>
-              <p className="ml-[20px] cursor-pointer">Futureproof</p>
-              <p className="ml-[20px] cursor-pointer">The Networking Academy</p>
+              <p className="ml-[20px] mt-1 cursor-pointer">About Us</p>
+              <p className="ml-[20px] mt-1 cursor-pointer">Contact Us</p>
+              <p className="ml-[20px] mt-1 cursor-pointer">Futureproof</p>
+              <p className="ml-[20px] mt-1 cursor-pointer">
+                The Networking Academy
+              </p>
             </div>
           </div>
           <div
@@ -105,9 +107,9 @@ export default function Home() {
           </div>
         </header>
         <div className="text-center mt-10">
-          <div className="text-3xl sm:text-5xl text-center mx-[5%] sm:mx-[25%]">
+          {/* <div className="text-3xl sm:text-5xl text-center mx-[5%] sm:mx-[25%]">
             Unleash the power of your relationships
-          </div>
+          </div> */}
           <div className="mx-15% text-[#AEAEAE] text-ml mt-5">
             A personal CRM and a community of people seeking to level up their
             relationships and unleash incredible opportunities.
@@ -245,7 +247,7 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-[#000] w-full sm:w-[47%] mt-5 sm:mt-0 rounded-[24px] border border-[0.2px] border-[#AEAEAE] border-opacity-50">
-            <div className="ml-3 sm:ml-[20vh] mt-[10vh]">
+            <div className="ml-3 sm:ml-[15vh] mt-[10vh]">
               <div className="mt-10 text-3xl text-gradient">
                 Remember details that matter
               </div>
@@ -265,7 +267,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/user-tag.svg"
                 alt="friends Icon"
@@ -273,7 +275,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Search</span> Looking to check who
               is more fit to be an angel in your first round? Or that developer
@@ -281,7 +283,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/like.svg"
                 alt="friends Icon"
@@ -289,7 +291,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Connect</span> All our users will
               have the opportunity to connect but not chat. A connection means
@@ -298,7 +300,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/people.svg"
                 alt="friends Icon"
@@ -306,7 +308,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Remember</span> Personal or
               professional relationship alike details are the one who make you
@@ -315,7 +317,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           className={`flex justify-center sm:justify-between mt-20 ${fontInter.className}`}
         >
           <div className="text-[#868686]">
@@ -351,7 +353,7 @@ export default function Home() {
             <div className="mt-[2rem]">Darlene Robertson</div>
             <div style={{ fontSize: "11px" }}>HV Capital</div>
           </div>
-        </div>
+        </div> */}
 
         <div className="text-center mt-20">
           <div className="text-[#fff] text-3xl sm:text-5xl mx-0 sm:mx-[20%] font-medium">
@@ -391,7 +393,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/user-tag.svg"
                 alt="friends Icon"
@@ -399,7 +401,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Search</span> Looking to check who
               is more fit to be an angel in your first round? Or that developer
@@ -407,7 +409,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/like.svg"
                 alt="friends Icon"
@@ -415,7 +417,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Connect</span> All our users will
               have the opportunity to connect but not chat. A connection means
@@ -424,7 +426,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex p-5">
-            <div>
+            {/* <div>
               <Image
                 src="/people.svg"
                 alt="friends Icon"
@@ -432,7 +434,7 @@ export default function Home() {
                 height={30}
                 priority
               />
-            </div>
+            </div> */}
             <div className="ml-4 text-[#AEAEAE] font-normal">
               <span className="text-[#fff]">Remember</span> Personal or
               professional relationship alike details are the one who make you
@@ -590,10 +592,10 @@ export default function Home() {
         <div className="bg-[#000] flex flex-col md:flex-row p-[5%] md:p-0 mt-[15vh] border-[1px] border-[#A4A4A4] border-opacity-50 rounded-[24px]">
           <div className="flex w-full md:w-1/2  p-0 md:p-[5vh] ml-0 md:ml-[8vh] mt-0 sm:mt-[10%]">
             <div className="flex flex-col">
-              <div className="text-[30px] text-[#FFFFFF] mb-5 mt-5">
+              <div className="text-3xl sm:text-5xl text-[#FFFFFF] mb-5 mt-5">
                 Get instant 1:1s with community members
               </div>
-              <div className="text-[19px] text-[#AEAEAE]">
+              <div className="text-[#AEAEAE]">
                 {`Once in the community, we will also arrange weekly 1:1s with
               members we believe you’ll like. With yhe public directory however,
               you can also do so yoursefl:)`}
@@ -634,7 +636,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row justify-between mt-10">
           <div className="bg-[#000] full-width sm:w-[47%] border border-[1px] border-[#AEAEAE] border-opacity-50 rounded-[24px] flex flex-col justify-center items-center">
             <div className="m-3 sm:m-20">
-              <div className="text-2xl sm:text-3xl text-[#fff] font-normal text-gradient">
+              <div className="text-3xl sm:text-[45px] text-[#fff] leading-[45px] text-gradient my-5">
                 Create a public profile and share it
               </div>
               <div className="mt-3 text-[#868686]">
@@ -653,7 +655,7 @@ export default function Home() {
           </div>
           <div className="bg-[#000] full-width sm:w-[47%] mt-5 sm:mt-0 border border-[1px] border-[#AEAEAE] border-opacity-50 rounded-[24px] flex flex-col justify-center items-center">
             <div className="m-3 sm:m-20">
-              <div className="text-4xl font-normal text-gradient text-[#fff]">
+              <div className="text-3xl sm:text-[45px] leading-10 text-gradient text-[#fff] my-5">
                 Be part of a high-growth community
               </div>
               <div className="mt-3 text-[#868686]">
@@ -672,7 +674,8 @@ export default function Home() {
           </div>
         </div>
         <div className="lineargradient2  mt-20 " />
-        <div className="flex flex-col sm:flex-row w-full items-center justify-between py-5 mb-20">
+        <div className="mt-20 " />
+        {/* <div className="flex flex-col sm:flex-row w-full items-center justify-between py-5 mb-20">
           <div>
             <Image
               src="/AVENUE.svg"
@@ -689,7 +692,7 @@ export default function Home() {
             <p className="ml-[20px] mt-2 sm:mt-0 cursor-pointer">Pricing</p>
             <p className="ml-[20px] mt-2 sm:mt-0 cursor-pointer">Contact us</p>
           </div>
-        </div>
+        </div> */}
 
         {/* <div className="flex flex-col sm:flex-row w-full align-center justify-between py-5 mb-20">
           <div>
