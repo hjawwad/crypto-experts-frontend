@@ -37,7 +37,7 @@ function Modal({ isOpen, onRequestClose, selectedRow }) {
       onRequestClose={onRequestClose}
       overlayClassName="p-0"
     >
-      <div className="bg-[#1f1f1f] w-full h-full p-[20px]">
+      <div className="bg-[#191919] w-full h-full p-[20px]">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 divide-x w-full">
             <div className="items-center justify-center mx-auto pt-[22px]">

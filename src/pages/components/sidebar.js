@@ -58,7 +58,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`"w-[225px] min-w-[225px] bg-[#1f1f1f] border ${
+      className={`"w-[225px] min-w-[225px] bg-[#191919] border ${
         mode?.darkMode ? "border-[#303030]" : "border-[#F2F2F2]"
       }`}
       style={{
