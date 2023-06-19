@@ -266,7 +266,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3">
             {/* <div>
               <Image
                 src="/user-tag.svg"
@@ -282,7 +282,7 @@ export default function Home() {
               you once saw on linkedin building an AI tool? We got you.
             </div>
           </div>
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3 ">
             {/* <div>
               <Image
                 src="/like.svg"
@@ -299,7 +299,7 @@ export default function Home() {
               want to en entire group or individually.
             </div>
           </div>
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3 ">
             {/* <div>
               <Image
                 src="/people.svg"
@@ -437,7 +437,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between mt-10">
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3 ">
             {/* <div>
               <Image
                 src="/connect.svg"
@@ -454,7 +454,7 @@ export default function Home() {
               database.
             </div>
           </div>
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3 ">
             {/* <div>
               <Image
                 src="/status-up.svg"
@@ -470,7 +470,7 @@ export default function Home() {
               similarly build.
             </div>
           </div>
-          <div className="flex p-5 w-1/3">
+          <div className="flex p-5 w-100 sm:w-1/3 ">
             {/* <div>
               <Image
                 src="/task-square.svg"
