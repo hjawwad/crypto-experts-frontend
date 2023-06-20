@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [darkMode, setDarkMode] = useState(true);
-  const color = { white: "#FFFFFF", dark: "#191919" };
+  const color = { white: "#FFFFFF", dark: "#0e0e0e" };
 
   useEffect(() => {
     localStorage.setItem("myContextValue", darkMode);

@@ -71,7 +71,7 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
       maxWidth: "500px",
       width: "500px",
       height: "200px",
-      backgroundColor: mode?.darkMode ? "#191919" : "white",
+      backgroundColor: mode?.darkMode ? "#0e0e0e" : "white",
     },
     overlay: {},
   };
@@ -88,7 +88,7 @@ function CreateGroup({ isOpen, onRequestClose, group }) {
           <input
             type="name"
             className={`w-full text-xl border border-slate-300 rounded-[16px] p-2 pl-5 ${
-              mode?.darkMode ? "bg-[#191919]" : ""
+              mode?.darkMode ? "bg-[#0e0e0e]" : ""
             }`}
             id="name"
             placeholder="Name of the group"

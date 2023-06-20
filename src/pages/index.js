@@ -25,7 +25,7 @@ export default function Home() {
 
   const handleLoginClick = async () => {
     await router.push("/dashboard");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
         </header>
         <div className="text-center mt-10">
-          {/* <div className="text-3xl sm:text-5xl text-center mx-[5%] sm:mx-[25%]">
+          {/* <div className="text-2xl sm:text-4xl text-center mx-[5%] sm:mx-[25%]">
             Unleash the power of your relationships
           </div> */}
           <div className="mx-15% text-[#AEAEAE] text-ml mt-5">
@@ -187,7 +187,7 @@ export default function Home() {
         <hr className="mt-20" />
 
         <div className="text-center mt-10">
-          <div className="text-3xl sm:text-5xl font-medium text-[#fff]">
+          <div className="text-2xl sm:text-4xl font-medium text-[#fff]">
             Human relationships manager
           </div>
           <div className="text-[#AEAEAE] mt-10 mx-[5%] sm:mx-[30%]">
@@ -487,7 +487,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="text-center text-[#fff] text-3xl sm:text-5xl mx-[5%] sm:mx-[20%] font-medium mt-[10vh] sm:mt-[15vh]">
+        <div className="text-center text-[#fff] text-2xl sm:text-4xl mx-[5%] sm:mx-[20%] font-medium mt-[10vh] sm:mt-[15vh]">
           People are the centre of what we do
         </div>
 
@@ -528,7 +528,7 @@ export default function Home() {
         </div> */}
 
         <div className="text-center mt-[15vh]">
-          <div className="text-3xl sm:text-5xl mx-[5%] sm:mx-[20%] font-medium">
+          <div className="text-2xl sm:text-4xl mx-[5%] sm:mx-[20%] font-medium">
             A community to build <br className="hidden sm:block" /> meaningful
             connections
           </div>
@@ -541,7 +541,7 @@ export default function Home() {
         <div className="bg-[#000] flex flex-col md:flex-row p-[5%] md:p-0 mt-[15vh] border-[1px] border-[#A4A4A4] border-opacity-50 rounded-[24px]">
           <div className="flex w-full md:w-1/2  p-0 md:p-[5vh] ml-0 md:ml-[8vh] mt-0 sm:mt-[10%]">
             <div className="flex flex-col">
-              <div className="text-3xl sm:text-5xl text-[#FFFFFF] mb-5 mt-5">
+              <div className="text-2xl sm:text-4xl text-[#FFFFFF] mb-5 mt-5">
                 Get instant 1:1s with community members
               </div>
               <div className="text-[#AEAEAE]">

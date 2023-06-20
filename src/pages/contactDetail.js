@@ -502,7 +502,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                               Name:
                             </label>
                             <input
-                              className="w-full bg-[#191919] text-l text-white border border-slate-300 rounded-[16px] bg-[#191919] p-2 pl-5"
+                              className="w-full bg-[#0e0e0e] text-l text-white border border-slate-300 rounded-[16px] bg-[#0e0e0e] p-2 pl-5"
                               type="text"
                               id={`name-${index}`}
                               name="name"
@@ -517,7 +517,7 @@ function ContactDetail({ setTableShow, setShowDetail }) {
                             </label>
                             <input
                               type="text"
-                              className="w-full bg-[#191919] text-white text-l border border-slate-300 rounded-[16px] bg-[#191919] p-2 pl-5"
+                              className="w-full bg-[#0e0e0e] text-white text-l border border-slate-300 rounded-[16px] bg-[#0e0e0e] p-2 pl-5"
                               id={`value-${index}`}
                               name="value"
                               style={rowStyle}
