@@ -46,6 +46,8 @@ export default function Signin() {
 
     try {
       const response = await login(email, password, remember);
+      debugger;
+
       setIsLoading(false);
 
       if (!response.status) {

@@ -25,7 +25,7 @@ export default function Home() {
 
   const handleLoginClick = async () => {
     await router.push("/dashboard");
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
@@ -107,9 +107,9 @@ export default function Home() {
           </div>
         </header>
         <div className="text-center mt-10">
-          {/* <div className="text-2xl sm:text-4xl text-center mx-[5%] sm:mx-[25%]">
+          <div className="text-2xl sm:text-4xl text-center mx-[5%] sm:mx-[25%]">
             Unleash the power of your relationships
-          </div> */}
+          </div>
           <div className="mx-15% text-[#AEAEAE] text-ml mt-5">
             A personal CRM and a community of people seeking to level up their
             relationships and unleash incredible opportunities.
