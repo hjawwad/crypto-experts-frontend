@@ -23,11 +23,6 @@ export default function Home() {
     router.push("/signin");
   };
 
-  const handleLoginClick = async () => {
-    await router.push("/dashboard");
-    window.location.reload();
-  };
-
   return (
     <div
       className={`flex justify-center min-h-screen`}
@@ -115,7 +110,15 @@ export default function Home() {
             relationships and unleash incredible opportunities.
           </div>
           <div>
-            <button className="bg-[#043200] font-medium mt-[10vh] sm:mt-5 p-3 px-10 rounded-[12px]">
+            <button
+              onClick={() =>
+                window.open(
+                  "https://docs.google.com/forms/d/e/1FAIpQLScJokk-RycYZwSJ7oOu3FnP_UW_ioJyb3W9Uk9BIjVa6_PNjg/viewform",
+                  "_blank"
+                )
+              }
+              className="bg-[#043200] font-medium mt-[10vh] sm:mt-5 p-3 px-10 rounded-[12px]"
+            >
               JOIN OUR FREE BETA
               <EastIcon className="ml-5" />
             </button>
